@@ -1,129 +1,117 @@
-<?php
-    if (! empty($_GET['q'])) {
-        $query = htmlspecialchars($_GET['q'], ENT_QUOTES, 'UTF-8');
-
-        switch ($query) {
-            case 'info':
-                phpinfo();
-                exit;
-            default:
-                header("HTTP/1.0 404 Not Found");
-                echo "Invalid query parameter.";
-                exit;
-        }
-    }
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laragon</title>
-    <style>
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-        font-weight: 100;
-        background-color: #f9f9f9;
-        color: #333;
-    }
-
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        text-align: center;
-    }
-
-    .content {
-        max-width: 800px;
-        padding: 100px;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .title {
-        font-size: 60px;
-        margin: 0;
-
-    }
-
-    .info {
-        margin-top: 20px;
-        line-height: 1.6;
-    }
-
-    .info a {
-        color: #007bff;
-        text-decoration: none;
-    }
-
-    .info a:hover {
-        color: #0056b3;
-        text-decoration: underline;
-    }
-
-    .opt {
-        margin-top: 30px;
-    }
-
-    .opt a {
-        color: #007bff;
-        font-size: 14px;
-        text-decoration: none;
-    }
-
-    .opt a:hover {
-        color: #0056b3;
-        text-decoration: underline;
-    }
-
-
-    button {
-        display: flex;
-        height: 3em;
-        width: 200px;
-        align-items: center;
-        justify-content: center;
-        background-color: #eeeeee4b;
-        border-radius: 3px;
-        letter-spacing: 1px;
-        transition: all 0.2s linear;
-        cursor: pointer;
-        border: none;
-        background: #fff;
-        box-shadow: 6px 6px 30px #d1d1d1, -6px -6px 30px #ffffff;
-        transform: translateY(-1px);
-    }
-
-    
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Way Together — Accueil</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- CSS personnalisé -->
+    <link href="fichiers/css/base.css" rel="stylesheet" />
+    <link href="fichiers/css/navbar.css" rel="stylesheet" />
+    <link href="fichiers/css/hero.css" rel="stylesheet" />
+    <link href="fichiers/css/cards.css" rel="stylesheet" />
+    <link href="fichiers/css/buttons.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="container">
-        <div class="content">
-            <h1 class="title" title="Laragon">Laragon</h1>
-            <div class="info">
-                <p><?php echo htmlspecialchars($_SERVER['SERVER_SOFTWARE'], ENT_QUOTES, 'UTF-8'); ?></p>
-                <p>PHP version: <?php echo htmlspecialchars(phpversion(), ENT_QUOTES, 'UTF-8'); ?>
-                    <a title="phpinfo()" href="/?q=info">info</a>
-                </p>
-                <p>Document Root: <?php echo htmlspecialchars($_SERVER['DOCUMENT_ROOT'], ENT_QUOTES, 'UTF-8'); ?></p>
-            </div>
-            <div class="opt">
-                <p><button><span><a title="Getting Started" target="_blank" href="https://laragon.org/docs"> Getting
-                                Started</a></span></button></p>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 px-4 shadow-sm">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="./images/logo.png" alt="Way Together" height="60" />
+            </a>
+
+            <!-- Bouton hamburger pour mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenu de la navbar -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <!-- Liens -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Trajets</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Proposer un trajet</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
+                </ul>
+
+                <!-- Barre de recherche -->
+                <form class="d-flex me-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Rechercher un trajet"
+                        aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">
+                        Chercher
+                    </button>
+                </form>
+
+                <!-- Boutons -->
+                <div class="d-flex align-items-center gap-2">
+                    <a href="SAECovoiturage/signup.php" class="btn btn-outline-primary">S'inscrire</a>
+                    <a href="SAECovoiturage/login.php" class="btn btn-primary">Se connecter</a>
+                </div>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero / Présentation -->
+    <header class="hero d-flex flex-column justify-content-center align-items-center text-center mb-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-3">
+                Partagez vos trajets, économisez et rencontrez des gens
+            </h1>
+            <p class="lead mb-4">
+                Rejoignez notre communauté pour voyager malin et réduire vos coûts.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-primary btn-lg">
+                    Contacter un conducteur
+                </button>
+                <button class="btn btn-primary btn-lg">Proposer un trajet</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Trajets Disponibles -->
+    <section class="container mb-5">
+        <h2 class="h4 fw-semibold mb-3">Trajets disponibles</h2>
+        <div id="results" class="row g-3">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <div>
+                            <h5 class="card-title">Paris → Lyon</h5>
+                            <p class="card-text text-muted small">
+                                15/11/2025 • 3 places • Conducteur : Marc
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <span class="fw-bold fs-5">€22</span>
+                            <button class="btn btn-outline-primary btn-sm">
+                                Contacter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Ajouter d'autres trajets ici -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-auto border-top text-center">
+        <div class="container">
+            <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

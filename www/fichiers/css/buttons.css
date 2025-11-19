@@ -1,0 +1,35 @@
+/* css/buttons.css */
+.btn-success {
+  background-color: #7eb93b;
+  color: #fff;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #6da12f;
+}
+
+.btn-warning {
+  background-color: #f0ad4e;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background-color: #e0973a;
+}
+
+/* Boutons */
+.btn-primary {
+  background-color: #7eb93b;
+  border: none;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #6da12f;
+}
+
+/* Card centrée */
+.card {
+  background-color: #ffffff;
+}

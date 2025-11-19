@@ -1,0 +1,14 @@
+/* css/navbar.css */
+nav.navbar {
+  background-color: #ffffff;
+}
+
+.navbar .btn-primary {
+  background-color: #7eb93b;
+  color: #fff;
+  border: none;
+}
+
+.navbar .btn-primary:hover {
+  background-color: #6da12f;
+}
