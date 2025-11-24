@@ -10,8 +10,6 @@
     <!-- CSS personnalisé -->
     <link href="fichiers/css/base.css" rel="stylesheet" />
     <link href="fichiers/css/navbar.css" rel="stylesheet" />
-    <link href="fichiers/css/hero.css" rel="stylesheet" />
-    <link href="fichiers/css/cards.css" rel="stylesheet" />
     <link href="fichiers/css/buttons.css" rel="stylesheet" />
 </head>
 
@@ -59,8 +57,8 @@
         </div>
     </nav>
 
-    <!-- Hero / Présentation -->
-    <header class="hero d-flex flex-column justify-content-center align-items-center text-center mb-5">
+    <!-- Présentation -->
+    <div class="hero d-flex flex-column justify-content-center align-items-center text-center mb-5">
         <div class="container">
             <h1 class="display-4 fw-bold mb-3">
                 Partagez vos trajets, économisez et rencontrez des gens
@@ -75,7 +73,7 @@
                 <button class="btn btn-primary btn-lg">Proposer un trajet</button>
             </div>
         </div>
-    </header>
+    </div>
 
     <!-- Section Trajets Disponibles -->
     <section class="container mb-5">

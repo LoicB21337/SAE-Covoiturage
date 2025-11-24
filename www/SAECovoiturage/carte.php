@@ -10,21 +10,9 @@
     <!-- CSS personnalisé -->
     <link href="../fichiers/css/base.css" rel="stylesheet" />
     <link href="../fichiers/css/navbar.css" rel="stylesheet" />
-    <link href="../fichiers/css/hero.css" rel="stylesheet" />
-    <link href="../fichiers/css/cards.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
+    <link href="../fichiers/css/map.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
-    #map {
-        height: 600px;
-        width: 100%;
-    }
-
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    </style>
 
 </head>
 
@@ -33,7 +21,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white py-3 px-4 shadow-sm">
         <div class="container-fluid">
             <!-- Logo -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="./../index.php">
                 <img src="./../images/logo.png" alt="Way Together" height="60" />
             </a>
 
@@ -47,7 +35,7 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
@@ -72,24 +60,25 @@
         </div>
     </nav>
 
-    <div id="map"></div>
+    <div id="map">
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+        // Initialisation de la carte
+        var map = L.map('map').setView([49.8941, 2.2950], 13); // Amiens
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script>
-    // Initialisation de la carte
-    var map = L.map('map').setView([49.8941, 2.2950], 13); // Amiens
+        // Ajout des tuiles OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+        </script>
+    </div>
 
-    // Ajout des tuiles OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
 
-    // Ajout d’un marqueur exemple
-    L.marker([49.8941, 2.2950]).addTo(map)
-        .bindPopup('Centre d\'Amiens')
-        .openPopup();
-    </script>
-
+    <footer class="bg-light py-4 mt-auto border-top text-center">
+        <div class="container">
+            <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
+        </div>
+    </footer>
 </body>
 
 </html>

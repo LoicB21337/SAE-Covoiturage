@@ -9,9 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <!-- CSS personnalisé -->
     <link href="../fichiers/css/base.css" rel="stylesheet" />
-    <link href="../fichiers/css/navbar.css" rel="stylesheet" />
-    <link href="../fichiers/css/hero.css" rel="stylesheet" />
-    <link href="../fichiers/css/cards.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
 </head>
 
