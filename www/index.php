@@ -7,10 +7,11 @@
     <title>Way Together — Accueil</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- CSS personnalisé -->
-    <link href="fichiers/css/base.css" rel="stylesheet" />
-    <link href="fichiers/css/navbar.css" rel="stylesheet" />
-    <link href="fichiers/css/buttons.css" rel="stylesheet" />
+    <link href="./fichiers/css/base.css" rel="stylesheet" />
+    <link href="./fichiers/css/navbar.css" rel="stylesheet" />
+    <link href="./fichiers/css/buttons.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -34,7 +35,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/trajet.php">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
                 </ul>
@@ -67,10 +68,8 @@
                 Rejoignez notre communauté pour voyager malin et réduire vos coûts.
             </p>
             <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-primary btn-lg">
-                    Contacter un conducteur
-                </button>
-                <button class="btn btn-primary btn-lg">Proposer un trajet</button>
+                <button class="btn btn-primary btn-lg" href="./SAECovoiturage/trajet.php">Trouver un trajet</button>
+                <button class="btn btn-primary btn-lg" href="#">Proposer un trajet</button>
             </div>
         </div>
     </div>
@@ -78,37 +77,128 @@
     <!-- Section Trajets Disponibles -->
     <section class="container mb-5">
         <h2 class="h4 fw-semibold mb-3">Trajets disponibles</h2>
-        <div id="results" class="row g-3">
-            <div class="col-md-4">
-                <div class="card h-100">
-                    <div class="card-body d-flex flex-column justify-content-between">
-                        <div>
-                            <h5 class="card-title">Paris → Lyon</h5>
-                            <p class="card-text text-muted small">
-                                15/11/2025 • 3 places • Conducteur : Marc
-                            </p>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mt-2">
-                            <span class="fw-bold fs-5">€22</span>
-                            <button class="btn btn-outline-primary btn-sm">
-                                Contacter
-                            </button>
-                        </div>
+        <div class="flex-container">
+            <div class="card h-100" id="trajet">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">Paris → Lyon</h5>
+                        <p class="card-text text-muted small">
+                            15/11/2025 9h • 3 places • Conducteur : Marc
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <span class="fw-bold fs-5">€22</span>
+                        <button class="btn btn-outline-primary btn-sm">
+                            Contacter
+                        </button>
                     </div>
                 </div>
             </div>
-            <!-- Ajouter d'autres trajets ici -->
+            <div class="card h-100" id="trajet">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">Paris → Lyon</h5>
+                        <p class="card-text text-muted small">
+                            15/11/2025 9h • 3 places • Conducteur : Marc
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <span class="fw-bold fs-5">€22</span>
+                        <button class="btn btn-outline-primary btn-sm">
+                            Contacter
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card h-100" id="trajet">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">Paris → Lyon</h5>
+                        <p class="card-text text-muted small">
+                            15/11/2025 9h • 3 places • Conducteur : Marc
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <span class="fw-bold fs-5">€22</span>
+                        <button class="btn btn-outline-primary btn-sm">
+                            Contacter
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card h-100" id="trajet">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">Paris → Lyon</h5>
+                        <p class="card-text text-muted small">
+                            15/11/2025 9h • 3 places • Conducteur : Marc
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <span class="fw-bold fs-5">€22</span>
+                        <button class="btn btn-outline-primary btn-sm">
+                            Contacter
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card h-100" id="trajet">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">Paris → Lyon</h5>
+                        <p class="card-text text-muted small">
+                            15/11/2025 9h • 3 places • Conducteur : Marc
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <span class="fw-bold fs-5">€22</span>
+                        <button class="btn btn-outline-primary btn-sm">
+                            Contacter
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card h-100" id="trajet">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">Paris → Lyon</h5>
+                        <p class="card-text text-muted small">
+                            15/11/2025 9h • 3 places • Conducteur : Marc
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <span class="fw-bold fs-5">€22</span>
+                        <button class="btn btn-outline-primary btn-sm">
+                            Contacter
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card h-100" id="trajet">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h5 class="card-title">Paris → Lyon</h5>
+                        <p class="card-text text-muted small">
+                            15/11/2025 9h • 3 places • Conducteur : Marc
+                        </p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2">
+                        <span class="fw-bold fs-5">€22</span>
+                        <button class="btn btn-outline-primary btn-sm">
+                            Contacter
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <!-- Ajouter d'autres trajets ici -->
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-light py-4 mt-auto border-top text-center">
-        <div class="container">
-            <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<footer class="bg-light py-4 mt-auto border-top text-center">
+    <div class="container">
+        <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
+    </div>
+</footer>
 
 </html>

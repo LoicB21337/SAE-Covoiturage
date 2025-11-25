@@ -12,9 +12,6 @@
     <link href="../fichiers/css/base.css" rel="stylesheet" />
     <link href="../fichiers/css/navbar.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
-    <link href="../fichiers/css/map.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
 </head>
 
 <body>
@@ -37,8 +34,8 @@
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
                 </ul>
@@ -61,18 +58,15 @@
         </div>
     </nav>
 
-    <div id="map">
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        <script>
-        // Initialisation de la carte
-        var map = L.map('map').setView([49.8941, 2.2950], 13); // Amiens
+    <section>
+        <div class="search-bar">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Rechercher un trajet" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Chercher</button>
+            </form>
+        </div>
+    </section>
 
-        // Ajout des tuiles OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-        </script>
-    </div>
 
 
 </body>
