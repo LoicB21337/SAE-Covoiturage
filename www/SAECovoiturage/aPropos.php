@@ -9,11 +9,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- CSS personnalisé -->
-    <link href="../fichiers/css/base.css" rel="stylesheet" />
+    <link href="../fichiers/css/aPropos.css" rel="stylesheet" />
     <link href="../fichiers/css/navbar.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
-    <link href="../fichiers/css/map.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
 
 </head>
 
@@ -37,10 +36,10 @@
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
                 </ul>
 
                 <!-- Barre de recherche -->
@@ -60,26 +59,47 @@
             </div>
         </div>
     </nav>
-
-    <div id="map">
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        <script>
-        // Initialisation de la carte
-        var map = L.map('map').setView([49.8941, 2.2950], 13); // Amiens
-
-        // Ajout des tuiles OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-        </script>
+<div>
+     <h1>A Propos</h1>
+    <div class="texte">
+    <p>
+        
+        Bienvenue sur Way Together, la plateforme de covoiturage créée par et pour les étudiants de l’IUT d’Amiens.
+    Notre mission est de faciliter les trajets domicile–campus en permettant aux étudiants de partager leurs déplacements sur l’ensemble de la région amiénoise, et même au-delà. En rassemblant conducteurs et passagers autour d’un service simple, économique et responsable, nous souhaitons encourager une mobilité plus durable pour tous.
+    </p>
+    <p>
+    Depuis la création du projet, nous nous engageons à offrir un environnement sécurisé, transparent et facile à utiliser. Grâce à une interface intuitive, une messagerie intégrée et un système d’avis fiable, chacun peut organiser ses trajets en toute confiance.
+    </p>
+    <p>
+    Que vous souhaitiez réduire vos frais de transport, optimiser vos trajets quotidiens ou simplement rencontrer d’autres étudiants, Way Together vous accompagne au quotidien.
+    </p>
+    <p>
+    Rejoignez la communauté de l’IUT d’Amiens et faisons du covoiturage une solution conviviale et durable pour nos déplacements.
+    </p>
+    <p>
+    Createurs : <br>
     </div>
+    <div class="texteCreateur">
+                Alison Pierre-louis<br>
+                Loïc Brunet<br>
+                Shana Brimeux<br>
+                Gabriel Vaucher<br>
+                Côme Vermeulen<br>
+                Lukas Langue
+    </div>
+    </p>
+   
+
+</p>
 
 
-</body>
+</div>
+
 <footer class="bg-light py-4 mt-auto border-top text-center">
     <div class="container">
         <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
     </div>
 </footer>
+</body>
 
 </html>
