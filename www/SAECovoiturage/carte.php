@@ -40,7 +40,7 @@
                     <li class="nav-item"><a class="nav-link" href="#">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
 
                 <!-- Barre de recherche -->
