@@ -1,0 +1,41 @@
+
+
+body {
+  background-color: #73b2e5 !important;
+  color: #000000;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  flex-direction: column;
+  bottom: 0;
+}
+
+
+
+.texte{
+  padding: 25px;
+  text-align: justify;
+  padding-top: 5px;
+  padding-bottom: 2px;
+}
+
+
+.texteCreateur{
+  padding-right: 15px;
+  text-align: justify;
+  padding-top: 0px;
+  padding-bottom: 5px;
+  padding-left: 50px;
+}
+
+h1{
+  padding-left: 25px;
+  padding-top: 13px;
+}
+
+footer{
+position:fixed;
+position: absolute; 
+bottom: 0; 
+left: 0; 
+right: 0
+}
