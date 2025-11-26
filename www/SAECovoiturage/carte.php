@@ -37,9 +37,9 @@
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./proposerTrajet.php">Proposer un trajet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Mes Réservations</a></li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
 
