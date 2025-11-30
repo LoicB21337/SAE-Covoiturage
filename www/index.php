@@ -1,3 +1,7 @@
+<?php
+require_once('./includes/session_start.php');
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -34,10 +38,18 @@
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/trajet.php">Trajets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./SAECovoiturage/trajet.php">Trajets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Proposer un trajet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a>
+                    </li>
                 </ul>
 
                 <!-- Barre de recherche -->
@@ -51,8 +63,15 @@
 
                 <!-- Boutons -->
                 <div class="d-flex align-items-center gap-2">
-                    <a href="SAECovoiturage/signup.php" class="btn btn-outline-primary">S'inscrire</a>
-                    <a href="SAECovoiturage/login.php" class="btn btn-primary">Se connecter</a>
+                    <?php if (isset($_SESSION['user'])){
+                        echo '<a href="SAECovoiturage/profile.php" class="btn btn-outline-primary">Mon profil</a>';
+                        echo '<a href="fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
+                    }else {
+                        echo '<a href="SAECovoiturage/signup.html" class="btn btn-outline-primary">S\'inscrire</a>';
+                        echo '<a href="SAECovoiturage/login.html" class="btn btn-primary">Se connecter</a>';
+                    }
+                      ?>
+
                 </div>
             </div>
         </div>
@@ -68,8 +87,12 @@
                 Rejoignez notre communauté pour voyager malin et réduire vos coûts.
             </p>
             <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-primary btn-lg" href="./SAECovoiturage/trajet.php">Trouver un trajet</button>
-                <button class="btn btn-primary btn-lg" href="#">Proposer un trajet</button>
+                <button class="btn btn-primary btn-lg" href="./SAECovoiturage/trajet.php">
+                    Trouver un trajet
+                </button>
+                <button class="btn btn-primary btn-lg" href="#">
+                    Proposer un trajet
+                </button>
             </div>
         </div>
     </div>
@@ -88,9 +111,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold fs-5">€22</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Contacter
-                        </button>
+                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
                     </div>
                 </div>
             </div>
@@ -104,9 +125,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold fs-5">€22</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Contacter
-                        </button>
+                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
                     </div>
                 </div>
             </div>
@@ -120,9 +139,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold fs-5">€22</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Contacter
-                        </button>
+                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
                     </div>
                 </div>
             </div>
@@ -136,9 +153,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold fs-5">€22</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Contacter
-                        </button>
+                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
                     </div>
                 </div>
             </div>
@@ -152,9 +167,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold fs-5">€22</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Contacter
-                        </button>
+                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
                     </div>
                 </div>
             </div>
@@ -168,9 +181,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold fs-5">€22</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Contacter
-                        </button>
+                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
                     </div>
                 </div>
             </div>
@@ -184,9 +195,7 @@
                     </div>
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold fs-5">€22</span>
-                        <button class="btn btn-outline-primary btn-sm">
-                            Contacter
-                        </button>
+                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
                     </div>
                 </div>
             </div>

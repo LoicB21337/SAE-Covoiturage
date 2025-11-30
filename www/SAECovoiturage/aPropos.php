@@ -1,3 +1,8 @@
+<?php
+require_once('./../includes/session_start.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,8 +17,6 @@
     <link href="../fichiers/css/aPropos.css" rel="stylesheet" />
     <link href="../fichiers/css/navbar.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
-
-
 </head>
 
 <body>
@@ -35,10 +38,18 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./../index.php">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./carte.php">Carte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./trajet.php">Trajets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Proposer un trajet</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
                 </ul>
 
@@ -53,8 +64,14 @@
 
                 <!-- Boutons -->
                 <div class="d-flex align-items-center gap-2">
-                    <a href="./signup.php" class="btn btn-outline-primary">S'inscrire</a>
-                    <a href="./login.php" class="btn btn-primary">Se connecter</a>
+                    <?php if (isset($_SESSION['user'])){
+                        echo '<a href="SAECovoiturage/profile.php" class="btn btn-outline-primary">Mon profil</a>';
+                        echo '<a href="fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
+                    }else {
+                        echo '<a href="SAECovoiturage/signup.html" class="btn btn-outline-primary">S\'inscrire</a>';
+                        echo '<a href="SAECovoiturage/login.html" class="btn btn-primary">Se connecter</a>';
+                    }
+                      ?>
                 </div>
             </div>
         </div>
@@ -63,49 +80,47 @@
         <h1>A Propos</h1>
         <div class="texte">
             <p>
-
-                Bienvenue sur Way Together, la plateforme de covoiturage créée par et pour les étudiants de l’IUT
-                d’Amiens.
-                Notre mission est de faciliter les trajets domicile–campus en permettant aux étudiants de partager leurs
-                déplacements sur l’ensemble de la région amiénoise, et même au-delà. En rassemblant conducteurs et
-                passagers autour d’un service simple, économique et responsable, nous souhaitons encourager une mobilité
-                plus durable pour tous.
+                Bienvenue sur Way Together, la plateforme de covoiturage créée par et
+                pour les étudiants de l’IUT d’Amiens. Notre mission est de faciliter
+                les trajets domicile–campus en permettant aux étudiants de partager
+                leurs déplacements sur l’ensemble de la région amiénoise, et même
+                au-delà. En rassemblant conducteurs et passagers autour d’un service
+                simple, économique et responsable, nous souhaitons encourager une
+                mobilité plus durable pour tous.
             </p>
             <p>
-                Depuis la création du projet, nous nous engageons à offrir un environnement sécurisé, transparent et
-                facile à utiliser. Grâce à une interface intuitive, une messagerie intégrée et un système d’avis fiable,
-                chacun peut organiser ses trajets en toute confiance.
+                Depuis la création du projet, nous nous engageons à offrir un
+                environnement sécurisé, transparent et facile à utiliser. Grâce à une
+                interface intuitive, une messagerie intégrée et un système d’avis
+                fiable, chacun peut organiser ses trajets en toute confiance.
             </p>
             <p>
-                Que vous souhaitiez réduire vos frais de transport, optimiser vos trajets quotidiens ou simplement
-                rencontrer d’autres étudiants, Way Together vous accompagne au quotidien.
+                Que vous souhaitiez réduire vos frais de transport, optimiser vos
+                trajets quotidiens ou simplement rencontrer d’autres étudiants, Way
+                Together vous accompagne au quotidien.
             </p>
             <p>
-                Rejoignez la communauté de l’IUT d’Amiens et faisons du covoiturage une solution conviviale et durable
-                pour nos déplacements.
+                Rejoignez la communauté de l’IUT d’Amiens et faisons du covoiturage
+                une solution conviviale et durable pour nos déplacements.
             </p>
-            <p>
-                Createurs : <br>
+            Createurs : <br />
         </div>
         <div class="texteCreateur">
-            Alison Pierre-louis<br>
-            Loïc Brunet<br>
-            Shana Brimeux<br>
-            Gabriel Vaucher<br>
-            Côme Vermeulen<br>
+            Alison Pierre-louis<br />
+            Loïc Brunet<br />
+            Shana Brimeux<br />
+            Gabriel Vaucher<br />
+            Côme Vermeulen<br />
             Lukas Langue
         </div>
-        </p>
-
-
-        </p>
-
-
+        <p></p>
     </div>
 
     <footer class="bg-light py-4 mt-auto border-top text-center">
         <div class="container">
-            <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
+            <small class="text-muted">
+                © 2025 Way Together — Tous droits réservés
+            </small>
         </div>
     </footer>
 </body>

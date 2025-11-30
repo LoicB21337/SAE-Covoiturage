@@ -1,3 +1,7 @@
+<?php
+require_once('./../includes/session_start.php');
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -14,7 +18,9 @@
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
     <link href="../fichiers/css/map.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
 </head>
 
 <body>
@@ -36,11 +42,19 @@
             <div class="collapse navbar-collapse" id="navbarContent">
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./../index.php">Accueil</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Proposer un trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./trajet.php">Trajets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Proposer un trajet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./aPropos.php">À propos</a>
+                    </li>
                 </ul>
 
                 <!-- Barre de recherche -->
@@ -54,27 +68,58 @@
 
                 <!-- Boutons -->
                 <div class="d-flex align-items-center gap-2">
-                    <a href="./signup.php" class="btn btn-outline-primary">S'inscrire</a>
-                    <a href="./login.php" class="btn btn-primary">Se connecter</a>
+                    <?php if (isset($_SESSION['user'])){
+                        echo '<a href="SAECovoiturage/profile.php" class="btn btn-outline-primary">Mon profil</a>';
+                        echo '<a href="fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
+                    }else {
+                        echo '<a href="SAECovoiturage/signup.html" class="btn btn-outline-primary">S\'inscrire</a>';
+                        echo '<a href="SAECovoiturage/login.html" class="btn btn-primary">Se connecter</a>';
+                    }
+                      ?>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div id="map">
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        <script>
-        // Initialisation de la carte
-        var map = L.map('map').setView([49.8941, 2.2950], 13); // Amiens
+    <div id="map"></div>
 
-        // Ajout des tuiles OpenStreetMap
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-        </script>
-    </div>
+    <script>
+    var map = L.map("map").setView([49.9, 2.3], 13);
 
+    // Fond de carte OpenStreetMap
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+    }).addTo(map);
 
+    // Contrôle de routage
+    L.Routing.control({
+        waypoints: [
+            L.latLng(49.9, 2.3), // Départ
+            L.latLng(49.91, 2.25), // Arrivée
+        ],
+        routeWhileDragging: true,
+        show: false, // cache le panneau directions
+        createMarker: function(i, wp, nWps) {
+            var label = i === 0 ? "Départ" : "Arrivée";
+
+            // Crée le marqueur avec popup ouverte et non fermable
+            var marker = L.marker(wp.latLng, {
+                draggable: false
+            }).bindPopup(
+                label, {
+                    autoClose: false,
+                    closeOnClick: false,
+                    closeButton: false,
+                }
+            );
+
+            // Ouvre la popup immédiatement
+            marker.openPopup();
+
+            return marker;
+        },
+    }).addTo(map);
+    </script>
 </body>
 <footer class="bg-light py-4 mt-auto border-top text-center">
     <div class="container">
