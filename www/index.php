@@ -42,7 +42,7 @@ require_once('./includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/proposerTrajet.php">Proposer un
-                            Trajet</a></li>
+                            trajet</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Mes Réservations</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a></li>
 
@@ -81,16 +81,8 @@ require_once('./includes/session_start.php');
                 Rejoignez notre communauté pour voyager malin et réduire vos coûts.
             </p>
             <div class="d-flex justify-content-center gap-3">
-                <<<<<<< HEAD <button class="btn btn-primary btn-lg" href="./SAECovoiturage/trajet.php">
-                    Trouver un trajet
-                    </button>
-                    <button class="btn btn-primary btn-lg" href="#">
-                        Proposer un trajet
-                    </button>
-                    =======
-                    <a href="./SAECovoiturage/trajet.php" class="btn btn-primary btn-lg">Trouver un trajet</a>
-                    <a href="./SAECovoiturage/proposerTrajet.php" class="btn btn-primary btn-lg">Proposer un trajet</a>
-                    >>>>>>> d5632436016d3f765bf3084f112b51b0419427cc
+                <a href="./SAECovoiturage/trajet.php" class="btn btn-primary btn-lg">Trouver un trajet</a>
+                <a href="./SAECovoiturage/proposerTrajet.php" class="btn btn-primary btn-lg">Proposer un trajet</a>
             </div>
         </div>
     </header>
@@ -98,7 +90,7 @@ require_once('./includes/session_start.php');
     <!-- Section Trajets Disponibles -->
     <section class="container mb-5">
         <h2 class="h4 fw-semibold mb-3">Trajets disponibles</h2>
-        <<<<<<< HEAD <div class="flex-container">
+        <div class="flex-container">
             <div class="card h-100" id="trajet">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div>

@@ -62,7 +62,7 @@ require_once('./../includes/session_start.php');
                 <div class="d-flex align-items-center gap-2">
                     <?php if (isset($_SESSION['user'])){
                         echo '<a href="SAECovoiturage/profile.php" class="btn btn-outline-primary">Mon profil</a>';
-                        echo '<a href="fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
+                        echo '<a href="../fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
                     }else {
                         echo '<a href="SAECovoiturage/signup.html" class="btn btn-outline-primary">S\'inscrire</a>';
                         echo '<a href="SAECovoiturage/login.html" class="btn btn-primary">Se connecter</a>';
