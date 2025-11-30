@@ -1,18 +1,18 @@
-body {
-  background-color: #73b2e5 !important;
-  color: #000000;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  flex-direction: column;
-  bottom: 0;
+/* css/base.css */
+html, body {
+  height: 100%;              /* occupe toute la hauteur */
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-content: stretch;
-  justify-content: space-around;
-  align-items: stretch;
+body {
+  background-color: #73b2e5 !important; 
+  color: #000000;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;             /* active flexbox */
+  flex-direction: column;    /* empile en colonne */
+  min-height: 100vh;         /* hauteur minimum = fenêtre */
+}
+
+main {
+  flex: 1;                   /* prend tout l’espace dispo */
 }

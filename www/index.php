@@ -15,6 +15,8 @@ require_once('./includes/session_start.php');
     <!-- CSS personnalisé -->
     <link href="./fichiers/css/base.css" rel="stylesheet" />
     <link href="./fichiers/css/navbar.css" rel="stylesheet" />
+    <link href="./fichiers/css/hero.css" rel="stylesheet" />
+    <link href="./fichiers/css/cards.css" rel="stylesheet" />
     <link href="./fichiers/css/buttons.css" rel="stylesheet" />
 </head>
 
@@ -24,7 +26,7 @@ require_once('./includes/session_start.php');
         <div class="container-fluid">
             <!-- Logo -->
             <a class="navbar-brand" href="#">
-                <img src="./images/logo.png" alt="Way Together" height="60" />
+                <img src="./images/logo.png" alt="Logo Way Together - Covoiturage" height="60" />
             </a>
 
             <!-- Bouton hamburger pour mobile -->
@@ -38,27 +40,19 @@ require_once('./includes/session_start.php');
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./SAECovoiturage/trajet.php">Trajets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Proposer un trajet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/proposerTrajet.php">Proposer un
+                            Trajet</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Mes Réservations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a></li>
+
                 </ul>
 
                 <!-- Barre de recherche -->
                 <form class="d-flex me-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Rechercher un trajet"
                         aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
-                        Chercher
-                    </button>
+                    <button class="btn btn-outline-success" type="submit">Chercher</button>
                 </form>
 
                 <!-- Boutons -->
@@ -77,30 +71,34 @@ require_once('./includes/session_start.php');
         </div>
     </nav>
 
-    <!-- Présentation -->
-    <div class="hero d-flex flex-column justify-content-center align-items-center text-center mb-5">
+    <!-- Hero / Présentation -->
+    <header class="hero d-flex flex-column justify-content-center align-items-center text-center mb-5">
         <div class="container">
             <h1 class="display-4 fw-bold mb-3">
                 Partagez vos trajets, économisez et rencontrez des gens
             </h1>
-            <p class="lead mb-4">
+            <p class="lead mb-4 fw-semibold">
                 Rejoignez notre communauté pour voyager malin et réduire vos coûts.
             </p>
             <div class="d-flex justify-content-center gap-3">
-                <button class="btn btn-primary btn-lg" href="./SAECovoiturage/trajet.php">
+                <<<<<<< HEAD <button class="btn btn-primary btn-lg" href="./SAECovoiturage/trajet.php">
                     Trouver un trajet
-                </button>
-                <button class="btn btn-primary btn-lg" href="#">
-                    Proposer un trajet
-                </button>
+                    </button>
+                    <button class="btn btn-primary btn-lg" href="#">
+                        Proposer un trajet
+                    </button>
+                    =======
+                    <a href="./SAECovoiturage/trajet.php" class="btn btn-primary btn-lg">Trouver un trajet</a>
+                    <a href="./SAECovoiturage/proposerTrajet.php" class="btn btn-primary btn-lg">Proposer un trajet</a>
+                    >>>>>>> d5632436016d3f765bf3084f112b51b0419427cc
             </div>
         </div>
-    </div>
+    </header>
 
     <!-- Section Trajets Disponibles -->
     <section class="container mb-5">
         <h2 class="h4 fw-semibold mb-3">Trajets disponibles</h2>
-        <div class="flex-container">
+        <<<<<<< HEAD <div class="flex-container">
             <div class="card h-100" id="trajet">
                 <div class="card-body d-flex flex-column justify-content-between">
                     <div>
@@ -196,18 +194,111 @@ require_once('./includes/session_start.php');
                     <div class="d-flex justify-content-between align-items-center mt-2">
                         <span class="fw-bold fs-5">€22</span>
                         <button class="btn btn-outline-primary btn-sm">Contacter</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Ajouter d'autres trajets ici -->
+                        =======
+                        <div class="row g-3">
+                            <!-- Exemple de trajet -->
+                            <div class="col-md-4">
+                                <div class="card h-100 shadow-sm">
+                                    <div class="card-body d-flex flex-column justify-content-between">
+                                        <div>
+                                            <h5 class="card-title">Paris → Lyon</h5>
+                                            <p class="card-text text-muted small">
+                                                15/11/2025 • 3 places • Conducteur : Marc
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                            <span class="fw-bold fs-5">€22</span>
+                                            <button class="btn btn-outline-primary btn-sm">Contacter</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row g-3">
+                                <!-- Exemple de trajet -->
+                                <div class="col-md-4">
+                                    <div class="card h-100 shadow-sm">
+                                        <div class="card-body d-flex flex-column justify-content-between">
+                                            <div>
+                                                <h5 class="card-title">Paris → Lyon</h5>
+                                                <p class="card-text text-muted small">
+                                                    15/11/2025 • 3 places • Conducteur : Marc
+                                                </p>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                                <span class="fw-bold fs-5">€22</span>
+                                                <button class="btn btn-outline-primary btn-sm">Contacter</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row g-3">
+                                    <!-- Exemple de trajet -->
+                                    <div class="col-md-4">
+                                        <div class="card h-100 shadow-sm">
+                                            <div class="card-body d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h5 class="card-title">Paris → Lyon</h5>
+                                                    <p class="card-text text-muted small">
+                                                        15/11/2025 • 3 places • Conducteur : Marc
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                                    <span class="fw-bold fs-5">€22</span>
+                                                    <button class="btn btn-outline-primary btn-sm">Contacter</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-3">
+                                        <!-- Exemple de trajet -->
+                                        <div class="col-md-4">
+                                            <div class="card h-100 shadow-sm">
+                                                <div class="card-body d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h5 class="card-title">Paris → Lyon</h5>
+                                                        <p class="card-text text-muted small">
+                                                            15/11/2025 • 3 places • Conducteur : Marc
+                                                        </p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                                        <span class="fw-bold fs-5">€22</span>
+                                                        <button
+                                                            class="btn btn-outline-primary btn-sm">Contacter</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row g-3">
+                                            <!-- Exemple de trajet -->
+                                            <div class="col-md-4">
+                                                <div class="card h-100 shadow-sm">
+                                                    <div class="card-body d-flex flex-column justify-content-between">
+                                                        <div>
+                                                            <h5 class="card-title">Paris → Lyon</h5>
+                                                            <p class="card-text text-muted small">
+                                                                15/11/2025 • 3 places • Conducteur : Marc
+                                                            </p>
+                                                        </div>
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center mt-2">
+                                                            <span class="fw-bold fs-5">€22</span>
+                                                            <button
+                                                                class="btn btn-outline-primary btn-sm">Contacter</button>
+                                                        </div>
+                                                        >>>>>>> d5632436016d3f765bf3084f112b51b0419427cc
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Tu peux dupliquer ce bloc pour ajouter d'autres trajets -->
+                                        </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-auto border-top text-center">
+        <div class="container">
+            <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
+        </div>
+    </footer>
 </body>
-<footer class="bg-light py-4 mt-auto border-top text-center">
-    <div class="container">
-        <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
-    </div>
-</footer>
 
 </html>

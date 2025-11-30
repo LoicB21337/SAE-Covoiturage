@@ -1,0 +1,43 @@
+/* style.css */
+
+/* Fond du body et texte */
+body {
+  background-color: #73b2e5 !important; /* bleu clair */
+  color: #000000; /* texte sombre */
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Hero / section principale */
+.hero {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+/* Cartes */
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* Boutons personnalisés */
+.btn-lg,
+.btn-lgg,
+.btn-connect {
+  min-width: 180px;
+  background-color: #7eb93b;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-lg:hover,
+.btn-lgg:hover,
+.btn-connect:hover {
+  background-color: #6da12f;
+}
+
+/* Navbar */
+nav.navbar {
+  background-color: #ffffff; /* blanc */
+}
+
