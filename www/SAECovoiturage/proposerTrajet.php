@@ -60,8 +60,8 @@ require_once('./../includes/session_start.php');
                         echo '<a href="SAECovoiturage/profile.php" class="btn btn-outline-primary">Mon profil</a>';
                         echo '<a href="../fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
                     }else {
-                        echo '<a href="SAECovoiturage/signup.html" class="btn btn-outline-primary">S\'inscrire</a>';
-                        echo '<a href="SAECovoiturage/login.html" class="btn btn-primary">Se connecter</a>';
+                        echo '<a href="./signup.html" class="btn btn-outline-primary">S\'inscrire</a>';
+                        echo '<a href="./login.html" class="btn btn-primary">Se connecter</a>';
                     }
                       ?>
                 </div>
@@ -70,15 +70,15 @@ require_once('./../includes/session_start.php');
     </nav>
 
     <!-- Contenu principal -->
-    <main class="container mt-5">
+    <main class="container mt-35 mb-3">
         <h2 class="mb-4 text-center">Proposer un trajet</h2>
-        <form class="row g-3">
+        <form class="row g-3" id="proposerTrajetForm" method="POST" action="../fichiers/php/proposerTrajet.php">
             <div class="col-md-6">
-                <label for="depart" class="form-label">Lieu de départ</label>
+                <label for="depart" class="form-label">Adresse de départ</label>
                 <input type="text" class="form-control" id="depart" name="depart" placeholder="Paris" required>
             </div>
             <div class="col-md-6">
-                <label for="arrivee" class="form-label">Lieu d'arrivée</label>
+                <label for="arrivee" class="form-label">Adresse d'arrivée</label>
                 <input type="text" class="form-control" id="arrivee" name="arrivee" placeholder="Lyon" required>
             </div>
             <div class="col-md-6">
@@ -88,6 +88,18 @@ require_once('./../includes/session_start.php');
             <div class="col-md-6">
                 <label for="heure" class="form-label">Heure</label>
                 <input type="time" class="form-control" id="heure" name="heure" required>
+            </div>
+            <div class="col-md-6">
+                <label for="places" class="form-label">Immatriculation de la voiture</label>
+                <input type="number" class="form-control" id="places" name="places" min="1" required>
+            </div>
+            <div class="col-md-6">
+                <label for="prix" class="form-label">Marque</label>
+                <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" required>
+            </div>
+            <div class="col-md-6">
+                <label for="prix" class="form-label">Model</label>
+                <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" required>
             </div>
             <div class="col-md-6">
                 <label for="places" class="form-label">Nombre de places</label>

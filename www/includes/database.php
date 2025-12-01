@@ -35,7 +35,6 @@ $pdo->exec("CREATE TABLE VEHICULE(
     marque VARCHAR(50) NOT NULL,
     modele VARCHAR(50) NOT NULL,
     immatriculation VARCHAR(20) NOT NULL UNIQUE,
-    nb_places INT NOT NULL,
     FOREIGN KEY (id_utilisateur) REFERENCES UTILISATEUR(id_utilisateur) ON DELETE CASCADE
 );");
 $pdo->exec("CREATE TABLE TRAJET(
@@ -44,7 +43,7 @@ $pdo->exec("CREATE TABLE TRAJET(
     depart VARCHAR(100) NOT NULL,
     arrivee VARCHAR(100) NOT NULL,
     date_depart DATETIME NOT NULL,
-    nb_places INT NOT NULL,
+    nb_places_dispo INT NOT NULL,
     prix DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (id_conducteur) REFERENCES UTILISATEUR(id_utilisateur) ON DELETE CASCADE
 );");
