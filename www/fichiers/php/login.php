@@ -15,7 +15,7 @@ if ($mail && $password) {
             $_SESSION['user'] = $user['id_utilisateur'];
             $_SESSION['nom'] = $user['nom'];
             $_SESSION['prenom'] = $user['prenom'];
-            echo "✅ Connexion réussie. Bienvenue " . htmlspecialchars($user['prenom']);
+            echo "✅ Connexion réussie. Bienvenue " . htmlspecialchars($user['prenom']) . "!";
         } else {
             echo "❌ Mot de passe incorrect.";
         }

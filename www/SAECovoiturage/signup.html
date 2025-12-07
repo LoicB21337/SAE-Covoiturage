@@ -12,10 +12,12 @@
     <!-- CSS personnalisé -->
     <link href="../fichiers/css/base.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../fichiers/css/compte.css" />
   </head>
 
   <body class="bg-light d-flex justify-content-center align-items-center">
     <div
+      id="top"
       class="card shadow-sm p-4"
       style="width: 100%; max-width: 400px; border-radius: 1rem"
     >
@@ -140,11 +142,11 @@
         confirm.addEventListener("input", checkPasswords);
       </script>
 
-      <div class="modal fade" id="resultModal" tabindex="-1">
+      <div class="modal fade" id="resultModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Création du compte</h5>
+              <h5 class="modal-title" id="resultTitle">Création du compte</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -166,42 +168,53 @@
       </div>
 
       <script>
-        const form = document.getElementById("signupForm");
-        const modalEl = document.getElementById("resultModal");
-        const modalMsg = document.getElementById("modalMessage");
-        const modal = new bootstrap.Modal(modalEl);
+        document.addEventListener("DOMContentLoaded", () => {
+          const form = document.getElementById("signupForm");
+          const modalEl = document.getElementById("resultModal");
+          const modalMsg = document.getElementById("modalMessage");
+          const modalTitle = document.getElementById("resultTitle");
+          const modal = new bootstrap.Modal(modalEl);
 
-        let isSuccess = false;
+          let isSuccess = false;
 
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
+          form.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-          const formData = new FormData(form);
+            const formData = new FormData(form);
 
-          fetch(form.action, {
-            method: "POST",
-            body: formData,
-          })
-            .then((response) => response.text())
-            .then((data) => {
-              // Détermine succès via contenu
-              isSuccess = data.includes("✅") || /succès|réussi/i.test(data);
-
-              modalMsg.textContent = data;
-              modal.show();
+            fetch(form.action, {
+              method: "POST",
+              body: formData,
             })
-            .catch((error) => {
-              isSuccess = false;
-              modalMsg.textContent = "❌ Une erreur est survenue : " + error;
-              modal.show();
-            });
-        });
+              .then((response) => response.text())
+              .then((data) => {
+                isSuccess = data.includes("✅") || /succès|réussi/i.test(data);
 
-        // Redirection uniquement si succès
-        modalEl.addEventListener("hidden.bs.modal", function () {
-          if (isSuccess) {
-            window.location.href = "../index.php";
-          }
+                modalTitle.textContent = isSuccess
+                  ? "Connexion réussie"
+                  : "Erreur de connexion";
+                modalMsg.textContent = data;
+
+                const header = modalEl.querySelector(".modal-header");
+                header.classList.toggle("bg-success", isSuccess);
+                header.classList.toggle("bg-danger", !isSuccess);
+                header.classList.add("text-white");
+
+                modal.show();
+              })
+              .catch((error) => {
+                isSuccess = false;
+                modalMsg.textContent = "❌ Une erreur est survenue : " + error;
+                modal.show();
+              });
+          });
+
+          // Redirection uniquement si succès
+          modalEl.addEventListener("hidden.bs.modal", function () {
+            if (isSuccess) {
+              window.location.href = "../index.php";
+            }
+          });
         });
       </script>
 

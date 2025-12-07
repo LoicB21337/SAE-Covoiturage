@@ -91,29 +91,99 @@ require_once('./../includes/session_start.php');
             </div>
             <div class="col-md-6">
                 <label for="places" class="form-label">Immatriculation de la voiture</label>
-                <input type="number" class="form-control" id="places" name="places" min="1" required>
+                <input type="text" class="form-control" id="immatriculation" name="immatriculation" required>
             </div>
             <div class="col-md-6">
                 <label for="prix" class="form-label">Marque</label>
-                <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" required>
+                <input type="text" class="form-control" id="marque" name="marque" required>
             </div>
             <div class="col-md-6">
-                <label for="prix" class="form-label">Model</label>
-                <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" required>
+                <label for="prix" class="form-label">Modèle</label>
+                <input type="text" class="form-control" id="modele" name="modele" required>
             </div>
             <div class="col-md-6">
                 <label for="places" class="form-label">Nombre de places</label>
                 <input type="number" class="form-control" id="places" name="places" min="1" required>
             </div>
-            <div class="col-md-6">
-                <label for="prix" class="form-label">Prix d'une place (€)</label>
-                <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" required>
+            <div class="row g-3">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                    <label for="prix" class="form-label">Prix d'une place (€)</label>
+                    <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" required>
+                </div>
             </div>
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary mt-3">Publier le trajet</button>
             </div>
         </form>
     </main>
+
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultTitle">Trajet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalMessage"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("proposerTrajetForm");
+        const modalEl = document.getElementById("resultModal");
+        const modalMsg = document.getElementById("modalMessage");
+        const modalTitle = document.getElementById("resultTitle");
+        const modal = new bootstrap.Modal(modalEl);
+
+        let isSuccess = false;
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                })
+                .then((response) => response.text())
+                .then((data) => {
+                    isSuccess = data.includes("✅") || /succès|réussi/i.test(data);
+
+                    modalTitle.textContent = isSuccess ?
+                        "Trajet ajouté avec succès" :
+                        "Erreur lors de l'ajout du trajet";
+                    modalMsg.textContent = data;
+
+                    const header = modalEl.querySelector(".modal-header");
+                    header.classList.toggle("bg-success", isSuccess);
+                    header.classList.toggle("bg-danger", !isSuccess);
+                    header.classList.add("text-white");
+
+                    modal.show();
+                })
+                .catch((error) => {
+                    isSuccess = false;
+                    modalTitle.textContent = "Erreur";
+                    modalMsg.textContent = "❌ Une erreur est survenue : " + error;
+                    const header = modalEl.querySelector(".modal-header");
+                    header.classList.remove("bg-success");
+                    header.classList.add("bg-danger", "text-white");
+                    modal.show();
+                });
+        });
+    });
+    </script>
 
     <!-- Footer collé en bas -->
     <footer class="bg-light py-4 border-top text-center">
