@@ -43,7 +43,7 @@ require_once('./includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/proposerTrajet.php">Proposer un
                             trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Mes Réservations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/Trajets.php">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a></li>
 
                 </ul>

@@ -41,7 +41,7 @@ require_once('./../includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./proposerTrajet.php">Proposer un trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Mes Réservations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Trajets.php">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
                 </ul>
 
