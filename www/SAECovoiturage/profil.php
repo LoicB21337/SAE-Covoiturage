@@ -1,27 +1,20 @@
 <?php
-require_once('./../includes/session_start.php');
+require('../includes/session_start.php');
+require('../fichiers/php/profil.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
+<header>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Way Together — Carte</title>
+    <title>Way Together — Profil Utilisateur</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- CSS personnalisé -->
     <link href="../fichiers/css/base.css" rel="stylesheet" />
-    <link href="../fichiers/css/navbar.css" rel="stylesheet" />
-    <link href="../fichiers/css/buttons.css" rel="stylesheet" />
-    <link href="../fichiers/css/map.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
-</head>
+</header>
 
 <body>
     <!-- Navbar -->
@@ -45,7 +38,7 @@ require_once('./../includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./proposerTrajet.php">Proposer un trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./Trajets.php">Trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Mes Réservations</a></li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
 
@@ -61,7 +54,7 @@ require_once('./../includes/session_start.php');
                 <!-- Boutons -->
                 <div class="d-flex align-items-center gap-2">
                     <?php if (isset($_SESSION['user'])){
-                        echo '<a href="profil.php" class="btn btn-outline-primary">Mon profil</a>';
+                        echo '<a href="#" class="btn btn-outline-primary">Mon profil</a>';
                         echo '<a href="../fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
                     }else {
                         echo '<a href="./signup.html" class="btn btn-outline-primary">S\'inscrire</a>';
@@ -73,50 +66,60 @@ require_once('./../includes/session_start.php');
         </div>
     </nav>
 
-    <div id="map"></div>
+    <head class="profile-header">
+        <div class="container text-center py-4">
+            <h2 id="username">Nom d'utilisateur</h2>
+            <button class="btn btn-outline-primary" id="editProfileBtn">Modifier le profil</button>
+            <a href="../fichiers/php/deconnexion.php" class="btn btn-danger ms-2">Déconnexion</a>
+        </div>
+    </head>
 
-    <script>
-    var map = L.map("map").setView([49.9, 2.3], 13);
+    <!-- Contenu principal -->
+    <main class="container mt-5">
+        <div class="row">
+            <!-- Informations personnelles -->
+            <section class="col-md-6 mb-4">
+                <h3>Informations personnelles</h3>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Nom :</strong> <span
+                            id="user-lastname"><?php echo $nom ?></span>
+                    </li>
+                    <li class="list-group-item"><strong>Prénom :</strong> <span
+                            id="user-firstname"><?php echo $prenom ?></span></li>
+                    <li class="list-group-item"><strong>Age :</strong> <span id="user-address"><?php echo $age ?></span>
+                    </li>
+                </ul>
+            </section>
 
-    // Fond de carte OpenStreetMap
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-    }).addTo(map);
+            <!-- Paramètres du compte -->
+            <section class="col-md-6 mb-4">
+                <h3>Informations du compte</h3>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Adresse mail :</strong> <?php echo $email ?> </li>
+                    <li class="list-group-item"><strong>N° de téléphone</strong> <?php echo $telephone ?> </li>
+                    <li class="list-group-item"><strong>Date d'inscription :</strong> <?php echo $date_inscription ?>
+                    </li>
+                </ul>
+                <button class="btn btn-warning mt-3" id="changePasswordBtn">Changer le mot de passe</button>
+            </section>
+        </div>
 
-    // Contrôle de routage
-    L.Routing.control({
-        waypoints: [
-            L.latLng(49.9, 2.3), // Départ
-            L.latLng(49.91, 2.25), // Arrivée
-        ],
-        routeWhileDragging: true,
-        show: false, // cache le panneau directions
-        createMarker: function(i, wp, nWps) {
-            var label = i === 0 ? "Départ" : "Arrivée";
+        <!-- Historique ou activités -->
+        <section class="mt-5">
+            <h3>Trajets proposés</h3>
+            <ul class="list-group" id="activity-list">
+                <?php afficherTrajets($trajets) ?>
+            </ul>
+        </section>
+    </main>
 
-            // Crée le marqueur avec popup ouverte et non fermable
-            var marker = L.marker(wp.latLng, {
-                draggable: false
-            }).bindPopup(
-                label, {
-                    autoClose: false,
-                    closeOnClick: false,
-                    closeButton: false,
-                }
-            );
-
-            // Ouvre la popup immédiatement
-            marker.openPopup();
-
-            return marker;
-        },
-    }).addTo(map);
-    </script>
+    <!-- Pied de page -->
+    <footer class="text-center py-4 mt-5 bg-light">
+        <p>&copy; 2025 MonSiteWeb - Tous droits réservés</p>
+    </footer>
 </body>
-<footer class="bg-light py-4 mt-auto border-top text-center">
-    <div class="container">
-        <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
-    </div>
-</footer>
+
+<body>
+</body>
 
 </html>
