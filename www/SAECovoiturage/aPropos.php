@@ -9,7 +9,7 @@ require_once('./../includes/session_start.php');
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Way Together — Accueil</title>
+    <title>Way Together — A propos</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -57,7 +57,7 @@ require_once('./../includes/session_start.php');
                 <!-- Boutons -->
                 <div class="d-flex align-items-center gap-2">
                     <?php if (isset($_SESSION['user'])){
-                        echo '<a href="SAECovoiturage/profile.php" class="btn btn-outline-primary">Mon profil</a>';
+                        echo '<a href="profil.php" class="btn btn-outline-primary">Mon profil</a>';
                         echo '<a href="../fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
                     }else {
                         echo '<a href="./signup.html" class="btn btn-outline-primary">S\'inscrire</a>';
