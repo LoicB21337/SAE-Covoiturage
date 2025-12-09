@@ -64,7 +64,7 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
                 </ul>
                 <div class="d-flex align-items-center gap-2">
                     <?php if (isset($_SESSION['user'])){
-                        echo '<a href="SAECovoiturage/profile.php" class="btn btn-outline-primary">Mon profil</a>';
+                        echo '<a href="profil.php" class="btn btn-outline-primary">Mon profil</a>';
                         echo '<a href="../fichiers/php/deconnexion.php" class="btn btn-primary">Se déconnecter</a>';
                     }else {
                         echo '<a href="./signup.html" class="btn btn-outline-primary">S\'inscrire</a>';

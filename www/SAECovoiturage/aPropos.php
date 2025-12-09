@@ -45,15 +45,6 @@ require_once('./../includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
                 </ul>
 
-                <!-- Barre de recherche -->
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Rechercher un trajet"
-                        aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
-                        Chercher
-                    </button>
-                </form>
-
                 <!-- Boutons -->
                 <div class="d-flex align-items-center gap-2">
                     <?php if (isset($_SESSION['user'])){

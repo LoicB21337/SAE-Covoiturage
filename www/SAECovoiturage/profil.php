@@ -14,6 +14,7 @@ require('../fichiers/php/profil.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="../fichiers/css/base.css" rel="stylesheet" />
+    <link href="../fichiers/css/mdpPopup.css" rel="stylesheet" />
 </header>
 
 <body>
@@ -42,14 +43,6 @@ require('../fichiers/php/profil.php');
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
 
-                <!-- Barre de recherche -->
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Rechercher un trajet"
-                        aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">
-                        Chercher
-                    </button>
-                </form>
 
                 <!-- Boutons -->
                 <div class="d-flex align-items-center gap-2">
@@ -69,7 +62,7 @@ require('../fichiers/php/profil.php');
     <head class="profile-header">
         <div class="container text-center py-4">
             <h2 id="username">Nom d'utilisateur</h2>
-            <button class="btn btn-outline-primary" id="editProfileBtn">Modifier le profil</button>
+            <a href="../fichiers/php/supprimerCompte.php" class="btn btn-danger ms-2">Supprimer le compte</a>
             <a href="../fichiers/php/deconnexion.php" class="btn btn-danger ms-2">Déconnexion</a>
         </div>
     </head>
@@ -100,11 +93,100 @@ require('../fichiers/php/profil.php');
                     <li class="list-group-item"><strong>Date d'inscription :</strong> <?php echo $date_inscription ?>
                     </li>
                 </ul>
-                <button class="btn btn-warning mt-3" id="changePasswordBtn">Changer le mot de passe</button>
+                <button onclick="openPopup()" class="btn btn-warning mt-3" id="changePasswordBtn">Changer le mot de
+                    passe</button>
             </section>
         </div>
 
-        <!-- Historique ou activités -->
+        <div class="overlay" id="overlay">
+            <div class="popup">
+                <h3>Changer le mot de passe</h3>
+                <form action="../fichiers/php/changerMdp.php" method="POST" id="changePasswordForm">
+                    <div class="mb-3">
+                        <label for="currentPassword" class="form-label">Mot de passe actuel</label>
+                        <input type="password" class="form-control" id="currentPassword" name="currentPassword"
+                            required />
+                    </div>
+                    <p id="serverResponse"></p>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Nouveau mot de passe</label>
+                        <input type="password" id="password" class="form-control" id="newPassword" name="newPassword"
+                            required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmNewPassword" class="form-label">Confirmer le nouveau
+                            mot de passe</label>
+                        <input type="password" id="confirm_password" class="form-control" id="confirmNewPassword"
+                            name="confirmNewPassword" required />
+                    </div>
+                    <p id="message"></p>
+                    <button type="submit" id="submitBtn" class="btn btn-primary">Valider</button>
+                    <button class="btn btn-primary" onclick="closePopup()">Fermer</button>
+            </div>
+        </div>
+
+        <script>
+        function openPopup() {
+            document.getElementById("overlay").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("overlay").style.display = "none";
+        }
+        </script>
+
+        <script>
+        const password = document.getElementById("password");
+        const confirm = document.getElementById("confirm_password");
+        const message = document.getElementById("message");
+        const submitBtn = document.getElementById("submitBtn");
+
+        function checkPasswords() {
+            if (confirm.value === "") {
+                message.textContent = "";
+                submitBtn.disabled = true;
+            } else if (password.value === confirm.value) {
+                message.textContent = "✅ Les mots de passe correspondent";
+                message.style.color = "green";
+                submitBtn.disabled = false; // bouton activé
+            } else {
+                message.textContent = "❌ Les mots de passe ne correspondent pas";
+                message.style.color = "red";
+                submitBtn.disabled = true; // bouton désactivé
+            }
+        }
+
+        password.addEventListener("input", checkPasswords);
+        confirm.addEventListener("input", checkPasswords);
+        </script>
+
+        <script>
+        const form = document.getElementById("changePasswordForm");
+        const serverResponse = document.getElementById("serverResponse");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // Empêche le rechargement
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                })
+                .then((response) => response.text())
+                .then((data) => {
+                    // Affiche le message renvoyé par changerMdp.php
+                    serverResponse.textContent = data;
+                    serverResponse.style.color = data.includes("✅") ? "green" : "red";
+                })
+                .catch((error) => {
+                    serverResponse.textContent = "❌ Erreur : " + error;
+                    serverResponse.style.color = "red";
+                });
+        });
+        </script>
+
+
         <section class="mt-5">
             <h3>Trajets proposés</h3>
             <ul class="list-group" id="activity-list">

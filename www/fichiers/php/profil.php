@@ -26,6 +26,4 @@ function afficherTrajets($trajets) {
     }
 }
 
-
-
 ?>

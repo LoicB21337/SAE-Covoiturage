@@ -49,13 +49,6 @@ require('./fichiers/php/Trajets.php');
 
                 </ul>
 
-                <!-- Barre de recherche -->
-                <form class="d-flex me-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Rechercher un trajet"
-                        aria-label="Search" />
-                    <button class="btn btn-outline-success" type="submit">Chercher</button>
-                </form>
-
                 <!-- Boutons -->
                 <div class="d-flex align-items-center gap-2">
                     <?php if (isset($_SESSION['user'])){
