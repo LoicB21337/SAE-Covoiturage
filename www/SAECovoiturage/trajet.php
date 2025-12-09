@@ -1,6 +1,11 @@
 <?php
 require('./../includes/session_start.php');
 require('../fichiers/php/Trajets.php');
+
+$depart = isset($_GET['depart']) ? $_GET['depart'] : null;
+$arrivee = isset($_GET['arrivee']) ? $_GET['arrivee'] : null;
+$date = isset($_GET['date']) ? $_GET['date'] : null;
+$heure = isset($_GET['heure']) ? $_GET['heure'] : null;
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +22,7 @@ require('../fichiers/php/Trajets.php');
     <style>
     html,
     body {
-        height: 100%; 
+        height: 100%;
         /* occupe toute la hauteur */
     }
 
@@ -52,7 +57,7 @@ require('../fichiers/php/Trajets.php');
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="proposerTrajet.php">Proposer un trajet</a>
+                    <li class="nav-item"><a class="nav-link" href="proposerTrajet.php">Proposer un trajet</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
@@ -72,35 +77,29 @@ require('../fichiers/php/Trajets.php');
     </nav>
 
     <!-- Contenu principal -->
-    
-    <h2 class="h4 fw-semibold mb-3">Trajets disponibles</h2>
-        <section class="container mb-5">
+    <section class="container my-5">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold">Trajets disponibles</h1>
+        </div>
+    </section>
+    <section class="container mb-5">
+        <search>
+            <div class="input-group mb-4">
+                <form action="" method="GET" class="d-flex gap-2 w-100">
+                    <input type="text" name="depart" class="form-control" placeholder="Départ" required
+                        value="<?php echo $depart ?>" />
+                    <input type="text" name="arrivee" class="form-control" placeholder="Arrivée" required
+                        value="<?php echo $arrivee ?>" />
+                    <input type="date" name="date" class="form-control" required value="<?php echo $date ?>" />
+                    <input type="time" name="heure" class="form-control" required value="<?php echo $heure ?>" />
+                    <button type="submit" class="btn btn-primary">Rechercher</button>
+                </form>
+            </div>
+        </search>
+        <script> </script>
         <div class="flex-container">
-
-    <?php
-    $trajets=$stmt -> fetchAll(PDO::FETCH_ASSOC );
-    foreach($trajets as $ligne) {  
-    ?>
-        
-            <div class="card h-100" id="trajet">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <div>
-                        <h5 class="card-title"><?php echo $ligne['depart'] ." → " . $ligne['arrivee']; ?></h5>
-                        <p class="card-text text-muted small">
-                            <?php echo $ligne['date_depart'] . " • " . $ligne['nb_places_dispo'] . "place(s) • Conducteur : " . $ligne['prenom'];?>
-                        </p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-2">
-                        <span class="fw-bold fs-5"><?php echo $ligne['prix'] . " €";?></span>
-                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
-                    </div>
-                </div>
-            </div> <!-- Tu peux dupliquer ce bloc pour ajouter d'autres trajets -->
-
-     <?php
-    } 
-    ?>
-    </div>
+            <?php rechercherTrajets($depart, $arrivee, $date, $heure);?>
+        </div>
     </section>
 
     <!-- Footer collé en bas -->

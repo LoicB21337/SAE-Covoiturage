@@ -1,5 +1,6 @@
 <?php
 require_once('./includes/session_start.php');
+require('./fichiers/php/Trajets.php');
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +44,7 @@ require_once('./includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/proposerTrajet.php">Proposer un
                             trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/Trajets.php">Trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/trajet.php">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/aPropos.php">À propos</a></li>
 
                 </ul>
@@ -91,20 +92,7 @@ require_once('./includes/session_start.php');
     <section class="container mb-5">
         <h2 class="h4 fw-semibold mb-3">Trajets disponibles</h2>
         <div class="flex-container">
-            <div class="card h-100" id="trajet">
-                <div class="card-body d-flex flex-column justify-content-between">
-                    <div>
-                        <h5 class="card-title">Paris → Lyon</h5>
-                        <p class="card-text text-muted small">
-                            15/11/2025 9h • 3 places • Conducteur : Marc
-                        </p>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center mt-2">
-                        <span class="fw-bold fs-5">€22</span>
-                        <button class="btn btn-outline-primary btn-sm">Contacter</button>
-                    </div>
-                </div>
-            </div> <!-- Tu peux dupliquer ce bloc pour ajouter d'autres trajets -->
+            <?php echo rechercherTrajets(null,null,null,null) ?>
         </div>
     </section>
 

@@ -52,7 +52,7 @@ require_once('./../includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link active" href="proposerTrajet.php">Proposer un trajet</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="./Trajets.php">Trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-2">
