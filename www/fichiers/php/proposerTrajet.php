@@ -21,14 +21,15 @@ if ($depart && $arrivee && $date && $heure && $immatriculation && $marque && $mo
     }
         $stmt = $pdo->query("SELECT id_utilisateur, id_vehicule FROM VEHICULE WHERE immatriculation = " . $pdo->quote($immatriculation));;
         $vehicule = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($vehicule['id_utilisateur']!=$user_id) {
+        if ($vehicule) {
+            if ($vehicule['id_utilisateur']!=$user_id) {
             echo "⚠️ Erreur : Cette immatriculation est déjà enregistrée";
             exit;
         }
         if ($vehicule['id_vehicule']) {
             // Véhicule déjà existant, on peut récupérer son id si besoin
             $vehicule_id = $vehicule['id_vehicule'];
-        } else {
+        }} else {
             // Véhicule n'existe pas, on l'insère dans la base de données
             $stmt = $pdo->prepare("
             INSERT INTO VEHICULE (id_utilisateur, marque, modele, immatriculation)

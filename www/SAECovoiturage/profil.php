@@ -127,13 +127,20 @@ require('../fichiers/php/profil.php');
 
         <script>
         function openPopup() {
-            document.getElementById("overlay").style.display = "flex";
+            const overlay = document.getElementById("overlay");
+            overlay.style.display = "flex";
+            overlay.setAttribute("aria-hidden", "false");
+            document.body.classList.add("overlay-open"); // bloque le scroll et évite les décalages
         }
 
         function closePopup() {
-            document.getElementById("overlay").style.display = "none";
+            const overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+            overlay.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("overlay-open");
         }
         </script>
+
 
         <script>
         const password = document.getElementById("password");
