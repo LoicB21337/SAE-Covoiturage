@@ -90,29 +90,26 @@ require_once('./../includes/session_start.php');
                 <input type="time" class="form-control" id="heure" name="heure" required>
             </div>
             <div class="col-md-6">
-                <label for="places" class="form-label">Immatriculation de la voiture</label>
-                <input type="text" class="form-control" id="immatriculation" name="immatriculation" required>
+                <label for="vehicule" class="form-label">Véhicule utilisé</label>
+                <select name="cars" class="form-control" id="cars">
+                    <?php
+                    if (!isset($_SESSION['user'])) {
+                        echo '<option value="">⚠️ Veuillez vous connecter pour voir vos véhicules</option>';
+                    }else{
+                    require_once('../fichiers/php/listerVoiture.php');
+                    listerVoitures();
+                    }
+                    ?>
+                </select>
             </div>
             <div class="col-md-6">
-                <label for="prix" class="form-label">Marque</label>
-                <input type="text" class="form-control" id="marque" name="marque" required>
-            </div>
-            <div class="col-md-6">
-                <label for="prix" class="form-label">Modèle</label>
-                <input type="text" class="form-control" id="modele" name="modele" required>
-            </div>
-            <div class="col-md-6">
-                <label for="places" class="form-label">Nombre de places</label>
+                <label for="places" class="form-label">Nombre de place</label>
                 <input type="number" class="form-control" id="places" name="places" min="1" required>
             </div>
-            <div class="row g-3">
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-4">
-                    <label for="prix" class="form-label">Prix d'une place (€)</label>
-                    <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" required>
-                </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <label for="prix" class="form-label">Prix d'une place (€)</label>
+                <input type="number" class="form-control" id="prix" name="prix" min="0" step="0.01" required>
             </div>
             <div class="col-12 text-center">
                 <button type="submit" class="btn btn-primary mt-3">Publier le trajet</button>

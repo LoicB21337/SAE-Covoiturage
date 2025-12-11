@@ -40,12 +40,14 @@ $pdo->exec("CREATE TABLE VEHICULE(
 $pdo->exec("CREATE TABLE TRAJET(
     id_trajet INT PRIMARY KEY AUTO_INCREMENT,
     id_conducteur INT,
+    id_vehicule INT,
     depart VARCHAR(100) NOT NULL,
     arrivee VARCHAR(100) NOT NULL,
     date_depart DATETIME NOT NULL,
     nb_places_dispo INT NOT NULL,
     prix DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_conducteur) REFERENCES UTILISATEUR(id_utilisateur) ON DELETE CASCADE
+    FOREIGN KEY (id_conducteur) REFERENCES UTILISATEUR(id_utilisateur) ON DELETE CASCADE,
+    FOREIGN KEY (id_vehicule) REFERENCES VEHICULE(id_vehicule) ON DELETE CASCADE
 );");
 $pdo->exec("CREATE TABLE RESERVATION(
     id_trajet INT,

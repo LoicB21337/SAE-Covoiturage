@@ -1,6 +1,7 @@
 <?php
 require('../includes/session_start.php');
 require('../fichiers/php/profil.php');
+require(__DIR__.'/../fichiers/php/voiture.php');
 ?>
 
 <!DOCTYPE html>
@@ -61,14 +62,103 @@ require('../fichiers/php/profil.php');
 
     <head class="profile-header">
         <div class="container text-center py-4">
-            <h2 id="username">Nom d'utilisateur</h2>
-            <a href="../fichiers/php/supprimerCompte.php" class="btn btn-danger ms-2">Supprimer le compte</a>
-            <a href="../fichiers/php/deconnexion.php" class="btn btn-danger ms-2">Déconnexion</a>
+            <h2 id="username"><?php echo "" . $prenom . " " . $nom?></h2>
         </div>
     </head>
 
     <!-- Contenu principal -->
     <main class="container mt-5">
+        <!-- Section enregistrer une nouvelle voiture et les voir -->
+        <section class="col-md mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3>Mes véhicules</h3>
+                <a href="#" onclick="openPopup2(); return false;" class="btn btn-primary">Ajouter un véhicule</a>
+            </div>
+
+            <ul class="list-group" id="vehicle-list">
+                <?php afficherVoitures(); ?>
+            </ul>
+        </section>
+
+        <!-- Overlay placé en dehors de la section -->
+        <div class="overlay" id="overlay2" aria-hidden="true">
+            <div class="popup2" role="dialog" aria-modal="true" aria-labelledby="popup2Title">
+                <h3 id="popup2Title">Ajouter un véhicule</h3>
+
+                <form action="../fichiers/php/ajouterVoiture.php" method="POST" id="ajouterVoitureForm">
+                    <div class="mb-3">
+                        <label for="immatriculation" class="form-label">Immatriculation</label>
+                        <input type="text" class="form-control" id="immatriculation" name="immatriculation" required />
+                    </div>
+
+                    <p id="serverResponse2" class="mb-2"></p>
+
+                    <div class="mb-3">
+                        <label for="marque" class="form-label">Marque</label>
+                        <input type="text" class="form-control" id="marque" name="marque" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="modele" class="form-label">Modèle</label>
+                        <input type="text" class="form-control" id="modele" name="modele" required />
+                    </div>
+                    <button type="submit" id="submitBtn2" class="btn btn-primary">Valider</button>
+                    <button type="button" class="btn btn-secondary" onclick="closePopup2()">Fermer</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+        function openPopup2() {
+            const overlay = document.getElementById("overlay2");
+            overlay.style.display = "flex";
+            overlay.setAttribute("aria-hidden", "false");
+            document.body.classList.add("overlay-open"); // bloque le scroll et évite les décalages
+        }
+
+        function closePopup2() {
+            const overlay = document.getElementById("overlay2");
+            overlay.style.display = "none";
+            overlay.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("overlay-open");
+        }
+        </script>
+
+        <script>
+        const form = document.getElementById("ajouterVoitureForm");
+        const serverResponse = document.getElementById("serverResponse2");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // Empêche le rechargement immédiat
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                    method: "POST",
+                    body: formData,
+                })
+                .then((response) => response.text())
+                .then((data) => {
+                    // Affiche le message renvoyé par voiture.php
+                    serverResponse.textContent = data;
+                    serverResponse.style.color = data.includes("✅") ? "green" : "red";
+
+                    // Si succès, recharger la page après un court délai
+                    if (data.includes("✅")) {
+                        setTimeout(() => {
+                            location.reload(); // recharge la page actuelle
+                        }, 1000); // délai 1 seconde pour laisser voir le message
+                    }
+                })
+                .catch((error) => {
+                    serverResponse.textContent = "❌ Erreur : " + error;
+                    serverResponse.style.color = "red";
+                });
+        });
+        </script>
+
+
+
+
         <div class="row">
             <!-- Informations personnelles -->
             <section class="col-md-6 mb-4">
@@ -96,6 +186,11 @@ require('../fichiers/php/profil.php');
                 <button onclick="openPopup()" class="btn btn-warning mt-3" id="changePasswordBtn">Changer le mot de
                     passe</button>
             </section>
+        </div>
+
+        <div class="container text-center py-4">
+            <a href="../fichiers/php/supprimerCompte.php" class="btn btn-danger ms-2">Supprimer le compte</a>
+            <a href="../fichiers/php/deconnexion.php" class="btn btn-danger ms-2">Déconnexion</a>
         </div>
 
         <div class="overlay" id="overlay">
@@ -206,9 +301,6 @@ require('../fichiers/php/profil.php');
     <footer class="text-center py-4 mt-5 bg-light">
         <p>&copy; 2025 MonSiteWeb - Tous droits réservés</p>
     </footer>
-</body>
-
-<body>
 </body>
 
 </html>
