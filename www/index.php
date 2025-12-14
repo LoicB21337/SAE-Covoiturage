@@ -42,7 +42,7 @@ require('./fichiers/php/Trajets.php');
             <div class="collapse navbar-collapse" id="navbarContent">
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./SAECovoiturage/proposerTrajet.php">Proposer un
                             trajet</a></li>
@@ -74,7 +74,7 @@ require('./fichiers/php/Trajets.php');
                 Partagez vos trajets, économisez et rencontrez des gens
             </h1>
             <p class="lead mb-4 fw-semibold">
-                Rejoignez notre communauté pour voyager malin et réduire vos coûts.
+                Rejoignez notre communauté pour voyager malin et réduire vos coûts
             </p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="./SAECovoiturage/trajet.php" class="btn btn-primary btn-lg">Trouver un trajet</a>

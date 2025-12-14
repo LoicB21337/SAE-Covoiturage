@@ -15,9 +15,10 @@ require_once('./../includes/session_start.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- CSS personnalisé -->
+     
     <link href="../fichiers/css/aPropos.css" rel="stylesheet" />
+     <link href="../fichiers/css/base.css" rel="stylesheet" />
     <link href="../fichiers/css/navbar.css" rel="stylesheet" />
-    <link href="../fichiers/css/buttons.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -43,7 +44,7 @@ require_once('./../includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./proposerTrajet.php">Proposer un trajet</a></li>
                     <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">À propos</a></li>
                 </ul>
 
                 <!-- Boutons -->
@@ -61,7 +62,11 @@ require_once('./../includes/session_start.php');
         </div>
     </nav>
     <div>
-        <h1>A Propos</h1>
+        <section class="container my-5">
+            <div class="text-center mb-4">
+                <h1 class="fw-bold">À Propos</h1>
+            </div>
+        </section>
         <div class="texte">
             <p>
                 Bienvenue sur Way Together, la plateforme de covoiturage créée par et
@@ -75,8 +80,7 @@ require_once('./../includes/session_start.php');
             <p>
                 Depuis la création du projet, nous nous engageons à offrir un
                 environnement sécurisé, transparent et facile à utiliser. Grâce à une
-                interface intuitive, une messagerie intégrée et un système d’avis
-                fiable, chacun peut organiser ses trajets en toute confiance.
+                interface intuitive.
             </p>
             <p>
                 Que vous souhaitiez réduire vos frais de transport, optimiser vos
@@ -95,16 +99,14 @@ require_once('./../includes/session_start.php');
             Shana Brimeux<br />
             Gabriel Vaucher<br />
             Côme Vermeulen<br />
-            Lukas Langue
+            Lukas Langue <br />
         </div>
-        <p></p>
     </div>
 
+    <!-- Footer -->
     <footer class="bg-light py-4 mt-auto border-top text-center">
         <div class="container">
-            <small class="text-muted">
-                © 2025 Way Together — Tous droits réservés
-            </small>
+            <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
         </div>
     </footer>
 </body>

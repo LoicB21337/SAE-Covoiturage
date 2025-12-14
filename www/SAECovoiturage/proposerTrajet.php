@@ -13,26 +13,7 @@ require_once('./../includes/session_start.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../fichiers/css/base.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
-    <style>
-    html,
-    body {
-        height: 100%;
-        /* occupe toute la hauteur */
-    }
 
-    body {
-        display: flex;
-        flex-direction: column;
-        /* empile en colonne */
-        min-height: 100vh;
-        /* hauteur minimum = fenêtre */
-    }
-
-    main {
-        flex: 1;
-        /* prend tout l’espace dispo */
-    }
-    </style>
 </head>
 
 <body>
@@ -71,8 +52,13 @@ require_once('./../includes/session_start.php');
     </nav>
 
     <!-- Contenu principal -->
+    <section class="container my-5">
+        <div class="text-center mb-4">
+            <h1 class="fw-bold">Proposer un trajet</h1>
+        </div>
+    </section>
+
     <main class="container mt-35 mb-3">
-        <h2 class="mb-4 text-center">Proposer un trajet</h2>
         <form class="row g-3" id="proposerTrajetForm" method="POST" action="../fichiers/php/proposerTrajet.php">
             <div class="col-md-6">
                 <label for="depart" class="form-label">Adresse de départ</label>
