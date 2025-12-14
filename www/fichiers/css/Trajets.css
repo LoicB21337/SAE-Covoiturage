@@ -1,3 +1,22 @@
+html,
+body {
+  height: 100%;
+  /* occupe toute la hauteur */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* empile en colonne */
+  min-height: 100vh;
+  /* hauteur minimum = fenêtre */
+}
+
+main {
+  flex: 1;
+  /* prend tout l’espace dispo */
+}
+
 footer {
   position: fixed;
   position: absolute;

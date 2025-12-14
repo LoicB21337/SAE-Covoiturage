@@ -14,31 +14,13 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="../images/icon.png">
     <title>Way Together — Trajets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../fichiers/css/base.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
     <link href="../fichiers/css/Trajets.css" rel="stylesheet" />
-    <style>
-    html,
-    body {
-        height: 100%;
-        /* occupe toute la hauteur */
-    }
-
-    body {
-        display: flex;
-        flex-direction: column;
-        /* empile en colonne */
-        min-height: 100vh;
-        /* hauteur minimum = fenêtre */
-    }
-
-    main {
-        flex: 1;
-        /* prend tout l’espace dispo */
-    }
-    </style>
+    <link href="../fichiers/css/popupReservation.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -85,22 +67,43 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
     <section class="container mb-5">
         <search>
             <div class="input-group mb-4">
-                <form action="" method="GET" class="d-flex gap-2 w-100">
-                    <input type="text" name="depart" class="form-control" placeholder="Départ" required
+                <form action="./trajet.php" method="GET" class="d-flex gap-2 w-100">
+                    <input type="text" name="depart" class="form-control" placeholder="Départ"
                         value="<?php echo $depart ?>" />
-                    <input type="text" name="arrivee" class="form-control" placeholder="Arrivée" required
+                    <input type="text" name="arrivee" class="form-control" placeholder="Arrivée"
                         value="<?php echo $arrivee ?>" />
-                    <input type="date" name="date" class="form-control" required value="<?php echo $date ?>" />
-                    <input type="time" name="heure" class="form-control" required value="<?php echo $heure ?>" />
+                    <input type="date" name="date" class="form-control" value="<?php echo $date ?>" />
+                    <input type="time" name="heure" class="form-control" value="<?php echo $heure ?>" />
                     <button type="submit" class="btn btn-primary">Rechercher</button>
                 </form>
             </div>
         </search>
-        <script> </script>
         <div class="flex-container">
             <?php rechercherTrajets($depart, $arrivee, $date, $heure);?>
         </div>
     </section>
+    <script>
+    let trajetId = null;
+
+    function openReservationPopup(id, info) {
+        trajetId = id;
+        document.getElementById("trajet-info").textContent = "Voulez-vous réserver ce trajet : " + info + " ?";
+        document.getElementById("overlay-reservation").style.display = "flex";
+        document.body.classList.add("overlay-open");
+    }
+
+    function closeReservationPopup() {
+        document.getElementById("overlay-reservation").style.display = "none";
+        document.body.classList.remove("overlay-open");
+    }
+
+    // Action sur bouton "Oui, réserver"
+    document.getElementById("confirmReservationBtn").addEventListener("click", function() {
+        if (trajetId) {
+            window.location.href = "reserver.php?id_trajet=" + trajetId;
+        }
+    });
+    </script>
 
     <!-- Footer collé en bas -->
     <footer class="bg-light py-4 border-top text-center">
@@ -111,5 +114,17 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+<div class="overlay" id="overlay-reservation">
+    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupReservationTitle">
+        <h3 id="popupReservationTitle">Confirmer la réservation</h3>
+        <p id="trajet-info">Voulez-vous réserver ce trajet ?</p>
+
+        <div class="d-flex gap-2 justify-content-center mt-3">
+            <button type="button" class="btn btn-primary" id="confirmReservationBtn">Oui, réserver</button>
+            <button type="button" class="btn btn-secondary" onclick="closeReservationPopup()">Annuler</button>
+        </div>
+    </div>
+</div>
 
 </html>

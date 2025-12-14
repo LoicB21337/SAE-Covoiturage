@@ -8,6 +8,7 @@ require_once('./../includes/session_start.php');
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="../images/icon.png">
     <title>Way Together — Proposer un trajet</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../fichiers/css/base.css" rel="stylesheet" />

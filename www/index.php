@@ -9,6 +9,7 @@ require('./fichiers/php/Trajets.php');
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="./images/icon.png">
     <title>Way Together — Accueil</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -19,6 +20,7 @@ require('./fichiers/php/Trajets.php');
     <link href="./fichiers/css/hero.css" rel="stylesheet" />
     <link href="./fichiers/css/cards.css" rel="stylesheet" />
     <link href="./fichiers/css/buttons.css" rel="stylesheet" />
+    <link href="../fichiers/css/popupReservation.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -85,7 +87,7 @@ require('./fichiers/php/Trajets.php');
     <section class="container mb-5">
         <h2 class="h4 fw-semibold mb-3">Trajets disponibles</h2>
         <div class="flex-container">
-            <?php echo rechercherTrajets(null,null,null,null) ?>
+            <?php rechercherTrajets(null,null,null,null) ?>
         </div>
     </section>
 
@@ -96,5 +98,41 @@ require('./fichiers/php/Trajets.php');
         </div>
     </footer>
 </body>
+
+
+<div class="overlay" id="overlay-reservation">
+    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupReservationTitle">
+        <h3 id="popupReservationTitle">Confirmer la réservation</h3>
+        <p id="trajet-info">Voulez-vous réserver ce trajet ?</p>
+
+        <div class="d-flex gap-2 justify-content-center mt-3">
+            <button type="button" class="btn btn-primary" id="confirmReservationBtn">Oui, réserver</button>
+            <button type="button" class="btn btn-secondary" onclick="closeReservationPopup()">Annuler</button>
+        </div>
+    </div>
+</div>
+
+<script>
+let trajetId = null;
+
+function openReservationPopup(id, info) {
+    trajetId = id;
+    document.getElementById("trajet-info").textContent = "Voulez-vous réserver ce trajet : " + info + " ?";
+    document.getElementById("overlay-reservation").style.display = "flex";
+    document.body.classList.add("overlay-open");
+}
+
+function closeReservationPopup() {
+    document.getElementById("overlay-reservation").style.display = "none";
+    document.body.classList.remove("overlay-open");
+}
+
+// Action sur bouton "Oui, réserver"
+document.getElementById("confirmReservationBtn").addEventListener("click", function() {
+    if (trajetId) {
+        window.location.href = "reserver.php?id_trajet=" + trajetId;
+    }
+});
+</script>
 
 </html>
