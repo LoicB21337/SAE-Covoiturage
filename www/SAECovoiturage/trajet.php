@@ -19,26 +19,7 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
     <link href="../fichiers/css/base.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
     <link href="../fichiers/css/Trajets.css" rel="stylesheet" />
-    <style>
-    html,
-    body {
-        height: 100%;
-        /* occupe toute la hauteur */
-    }
 
-    body {
-        display: flex;
-        flex-direction: column;
-        /* empile en colonne */
-        min-height: 100vh;
-        /* hauteur minimum = fenêtre */
-    }
-
-    main {
-        flex: 1;
-        /* prend tout l’espace dispo */
-    }
-    </style>
 </head>
 
 <body>
@@ -59,7 +40,7 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="proposerTrajet.php">Proposer un trajet</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Trajets</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
                 <div class="d-flex align-items-center gap-2">
