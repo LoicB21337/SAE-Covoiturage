@@ -1,5 +1,3 @@
-
-
 body {
   background-color: #73b2e5 !important;
   color: #000000;
@@ -9,33 +7,29 @@ body {
   bottom: 0;
 }
 
-
-
-.texte{
+.texte {
   padding: 25px;
   text-align: justify;
   padding-top: 5px;
   padding-bottom: 2px;
 }
 
-
-.texteCreateur{
+.texteCreateur {
   padding-right: 15px;
   text-align: justify;
   padding-top: 0px;
-  padding-bottom: 5px;
+  padding-bottom: 90px;
   padding-left: 50px;
 }
 
-h1{
+h1 {
   padding-left: 25px;
   padding-top: 13px;
 }
 
-footer{
-position:fixed;
-position: absolute; 
-bottom: 0; 
-left: 0; 
-right: 0
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

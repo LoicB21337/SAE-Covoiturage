@@ -9,7 +9,7 @@ function rechercherTrajets($depart = null, $arrivee = null, $date = null, $heure
                 t.nb_places_dispo, t.prix, u.prenom
             FROM TRAJET t
             JOIN UTILISATEUR u ON t.id_conducteur = u.id_utilisateur
-            WHERE 1=1";
+            WHERE t.nb_places_dispo > 0";
     $params = [];
 
     // Exclure les trajets de l'utilisateur connecté
@@ -44,10 +44,8 @@ function rechercherTrajets($depart = null, $arrivee = null, $date = null, $heure
     } elseif (!empty($date) && empty($heure)) {
         // Date seule → toute la journée
         $start = $date . " 00:00:00";
-        $end   = $date . " 23:59:59";
-        $sql .= " AND t.date_depart BETWEEN ? AND ?";
+        $sql .= " AND t.date_depart >= ?";
         $params[] = $start;
-        $params[] = $end;
 
     } elseif (empty($date) && !empty($heure)) {
         // Heure seule → aujourd'hui à partir de cette heure
@@ -86,15 +84,19 @@ function afficherTrajets($trajets) {
             <p class="card-text text-muted small">
                 <?php echo $ligne['date_depart'] . " • " . $ligne['nb_places_dispo'] . " place(s) • Conducteur : " . $ligne['prenom'];?>
             </p>
+            <?php if(isset($_SESSION['user'])){?>
             <button onclick="openReservationPopup(
                 <?php echo $ligne['id_trajet'] . ", '" . $ligne['depart']. " → ". $ligne['arrivee'] ; ?>')"
                 class="btn btn-outline-primary btn-primary">
                 Réserver
             </button>
+            <?php } ?>
         </div>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <span class="fw-bold fs-5"><?php echo $ligne['prix'] . " €";?></span>
+            <?php if (isset($_SESSION['user'])){?>
             <button class="btn btn-outline-primary btn-sm">Contacter</button>
+            <?php } ?>
         </div>
     </div>
 </div>

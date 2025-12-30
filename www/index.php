@@ -130,7 +130,7 @@ function closeReservationPopup() {
 // Action sur bouton "Oui, réserver"
 document.getElementById("confirmReservationBtn").addEventListener("click", function() {
     if (trajetId) {
-        window.location.href = "reserver.php?id_trajet=" + trajetId;
+        window.location.href = "./fichiers/php/reserver.php?id_trajet=" + trajetId;
     }
 });
 </script>

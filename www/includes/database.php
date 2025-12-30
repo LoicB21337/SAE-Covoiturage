@@ -55,8 +55,8 @@ $pdo->exec("CREATE TABLE RESERVATION(
     date_reservation DATETIME DEFAULT CURRENT_TIMESTAMP,
     statut ENUM('en_attente', 'confirmee', 'annulee') NOT NULL,
     PRIMARY KEY (id_trajet, id_passager),
-    FOREIGN KEY (id_trajet) REFERENCES TRAJET(id_trajet) ON DELETE CASCADE,
-    FOREIGN KEY (id_passager) REFERENCES UTILISATEUR(id_utilisateur) ON DELETE CASCADE
+    FOREIGN KEY (id_trajet) REFERENCES TRAJET(id_trajet),
+    FOREIGN KEY (id_passager) REFERENCES UTILISATEUR(id_utilisateur)
 );");
 $pdo->exec("CREATE TABLE AVIS(
     id_avis INT PRIMARY KEY AUTO_INCREMENT,

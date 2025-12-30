@@ -1,6 +1,6 @@
 <?php
-require('../includes/session_start.php');
-require('../fichiers/php/profil.php');
+require(__DIR__.'/../includes/session_start.php');
+require(__DIR__.'/../fichiers/php/profil.php');
 require(__DIR__.'/../fichiers/php/voiture.php');
 ?>
 
@@ -10,7 +10,7 @@ require(__DIR__.'/../fichiers/php/voiture.php');
 <header>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/png" href="../images/icon.png">
+    <link rel="icon" type="image/png" href="../images/icon.png" />
     <title>Way Together — Profil Utilisateur</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -42,7 +42,7 @@ require(__DIR__.'/../fichiers/php/voiture.php');
                     <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./proposerTrajet.php">Proposer un trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Mes Réservations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
 

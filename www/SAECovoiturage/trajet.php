@@ -78,10 +78,23 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
                 </form>
             </div>
         </search>
-        <div class="flex-container">
+        <div id="liste" class="flex-container">
             <?php rechercherTrajets($depart, $arrivee, $date, $heure);?>
         </div>
     </section>
+
+    <div class="overlay" id="overlay-reservation">
+        <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupReservationTitle">
+            <h3 id="popupReservationTitle">Confirmer la réservation</h3>
+            <p id="trajet-info">Voulez-vous réserver ce trajet ?</p>
+
+            <div class="d-flex gap-2 justify-content-center mt-3">
+                <button type="button" class="btn btn-primary" id="confirmReservationBtn">Oui, réserver</button>
+                <button type="button" class="btn btn-secondary" onclick="closeReservationPopup()">Annuler</button>
+            </div>
+        </div>
+    </div>
+
     <script>
     let trajetId = null;
 
@@ -100,7 +113,7 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
     // Action sur bouton "Oui, réserver"
     document.getElementById("confirmReservationBtn").addEventListener("click", function() {
         if (trajetId) {
-            window.location.href = "reserver.php?id_trajet=" + trajetId;
+            window.location.href = "./../fichiers/php/reserver.php?id_trajet=" + trajetId;
         }
     });
     </script>
@@ -114,17 +127,5 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-<div class="overlay" id="overlay-reservation">
-    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupReservationTitle">
-        <h3 id="popupReservationTitle">Confirmer la réservation</h3>
-        <p id="trajet-info">Voulez-vous réserver ce trajet ?</p>
-
-        <div class="d-flex gap-2 justify-content-center mt-3">
-            <button type="button" class="btn btn-primary" id="confirmReservationBtn">Oui, réserver</button>
-            <button type="button" class="btn btn-secondary" onclick="closeReservationPopup()">Annuler</button>
-        </div>
-    </div>
-</div>
 
 </html>
