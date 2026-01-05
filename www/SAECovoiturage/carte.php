@@ -1,5 +1,37 @@
 <?php
 require_once('./../includes/session_start.php');
+
+$depart = isset($_GET['depart']) ? $_GET['depart'] : null;
+$arrivee = isset($_GET['arrivee']) ? $_GET['arrivee'] : null;
+$date = isset($_GET['date']) ? $_GET['date'] : null;
+$heure = isset($_GET['heure']) ? $_GET['heure'] : null;
+
+
+function getCoords($adresse) {
+    $url = "https://nominatim.openstreetmap.org/search?format=json&limit=1&q=" . urlencode($adresse);
+
+    $opts = [
+        "http" => [
+            "header" => "User-Agent: SAE-Covoiturage/1.0\r\n"
+        ]
+    ];
+
+    $context = stream_context_create($opts);
+    $json = file_get_contents($url, false, $context);
+    $data = json_decode($json, true);
+
+    if (!$data || count($data) === 0) return null;
+
+    return [
+        "lat" => $data[0]["lat"],
+        "lon" => $data[0]["lon"]
+    ];
+}
+
+if ($depart || $arrivee) {
+    $coordDepart = getCoords($depart);
+    $coordArrivee = getCoords($arrivee);
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +78,9 @@ require_once('./../includes/session_start.php');
                     <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link active" href="./carte.php">Carte</a></li>
                     <li class="nav-item"><a class="nav-link" href="./proposerTrajet.php">Proposer un trajet</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            <?php if($depart || $arrivee || $date || $heure) { echo 'href="./trajet.php?depart=' . urlencode($depart) . '&arrivee=' . urlencode($arrivee) . '&date=' . urlencode($date) . '&heure=' . urlencode($heure) . '"'; } else { echo 'href="./trajet.php"'; } ?>>Trajets</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
 
@@ -69,23 +103,25 @@ require_once('./../includes/session_start.php');
     <div id="map"></div>
 
     <script>
-    var map = L.map("map").setView([49.9, 2.3], 13);
+    var map = L.map("map").setView([49.9, 2.3], 10);
 
     // Fond de carte OpenStreetMap
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors",
-    }).addTo(map);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(map);
 
+    <?php if ($depart || $arrivee) { ?>
     // Contrôle de routage
     L.Routing.control({
         waypoints: [
-            L.latLng(49.9, 2.3), // Départ
-            L.latLng(49.91, 2.25), // Arrivée
+            L.latLng(<?php echo $coordDepart ? $coordDepart['lat'] : '49.9'; ?>,
+                <?php echo $coordDepart ? $coordDepart['lon'] : '2.3'; ?>),
+            L.latLng(<?php echo $coordArrivee ? $coordArrivee['lat'] : '49.9'; ?>,
+                <?php echo $coordArrivee ? $coordArrivee['lon'] : '2.3'; ?>)
         ],
         routeWhileDragging: true,
+        addWaypoints: false,
         show: false, // cache le panneau directions
         createMarker: function(i, wp, nWps) {
-            var label = i === 0 ? "Départ" : "Arrivée";
+            var label = i === 0 ? "<?php echo $depart; ?>" : "<?php echo $arrivee; ?>";
 
             // Crée le marqueur avec popup ouverte et non fermable
             var marker = L.marker(wp.latLng, {
@@ -104,6 +140,7 @@ require_once('./../includes/session_start.php');
             return marker;
         },
     }).addTo(map);
+    <?php } ?>
     </script>
 </body>
 <footer class="bg-light py-4 mt-auto border-top text-center">

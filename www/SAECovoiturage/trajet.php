@@ -68,14 +68,43 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
         <search>
             <div class="input-group mb-4">
                 <form action="./trajet.php" method="GET" class="d-flex gap-2 w-100">
-                    <input type="text" name="depart" class="form-control" placeholder="Départ"
-                        value="<?php echo $depart ?>" />
-                    <input type="text" name="arrivee" class="form-control" placeholder="Arrivée"
-                        value="<?php echo $arrivee ?>" />
-                    <input type="date" name="date" class="form-control" value="<?php echo $date ?>" />
-                    <input type="time" name="heure" class="form-control" value="<?php echo $heure ?>" />
-                    <button type="submit" class="btn btn-primary">Rechercher</button>
-                </form>
+                    <div class="col-12">
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <input type="text" name="depart" class="form-control" placeholder="Départ"
+                                    value="<?php echo $depart ?>" />
+                            </div>
+                            <div class="col-6">
+                                <input type="text" name="arrivee" class="form-control" placeholder="Arrivée"
+                                    value="<?php echo $arrivee ?>" />
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-6">
+                                <input type="date" name="date" class="form-control" value="<?php echo $date ?>" />
+                            </div>
+                            <div class="col-6">
+                                <input type="time" name="heure" class="form-control" value="<?php echo $heure ?>" />
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-5"></div>
+                            <div class="col-2">
+                                <div class="row">
+                                    <button type="submit" class="btn btn-primary">Rechercher</button>
+                                    <button onclick="window.location.href='./trajet.php'" type="reset"
+                                        class="btn btn-secondary">Effacer
+                                        la recherche</button>
+                                </div>
+
+                            </div>
+                            <div class="col-5"></div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+
+            </form>
             </div>
         </search>
         <div id="liste" class="flex-container">

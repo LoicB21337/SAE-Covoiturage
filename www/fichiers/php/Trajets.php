@@ -94,9 +94,8 @@ function afficherTrajets($trajets) {
         </div>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <span class="fw-bold fs-5"><?php echo $ligne['prix'] . " €";?></span>
-            <?php if (isset($_SESSION['user'])){?>
-            <button class="btn btn-outline-primary btn-sm">Contacter</button>
-            <?php } ?>
+            <a href="carte.php?depart=<?php echo urlencode($ligne['depart']); ?>&arrivee=<?php echo urlencode($ligne['arrivee']);?>&date=<?php echo urlencode(substr($ligne['date_depart'],0,10));?>&heure=<?php echo urlencode(substr($ligne['date_depart'],11,5));?>"
+                class="btn btn-outline-primary btn-sm">Voir sur la carte</a>
         </div>
     </div>
 </div>
