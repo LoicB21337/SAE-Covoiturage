@@ -39,8 +39,8 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="../index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
-                    <li class="nav-item"><a class="nav-link" href="proposerTrajet.php">Proposer un trajet</a>
-                    </li>
+                    <?php if (isset($_SESSION['user'])) { echo '<li class="nav-item"><a class="nav-link" href="./SAECovoiturage/proposerTrajet.php">Proposer un
+                            trajet</a></li>'; } ?>
                     <li class="nav-item"><a class="nav-link active" href="#">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>

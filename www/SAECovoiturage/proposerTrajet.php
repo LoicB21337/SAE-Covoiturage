@@ -70,7 +70,8 @@ require_once('./../includes/session_start.php');
             </div>
             <div class="col-md-6">
                 <label for="date" class="form-label">Date</label>
-                <input type="date" class="form-control" id="date" name="date" required>
+                <input type="date" min="<?php echo date('Y-m-d'); ?>" class="form-control" id="date" name="date"
+                    required>
             </div>
             <div class="col-md-6">
                 <label for="heure" class="form-label">Heure</label>

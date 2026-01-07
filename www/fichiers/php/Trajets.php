@@ -94,8 +94,14 @@ function afficherTrajets($trajets) {
         </div>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <span class="fw-bold fs-5"><?php echo $ligne['prix'] . " €";?></span>
+            <!-- Si la page est la page d'accueil ne pas afficher -->
+            <?php if ($page = basename($_SERVER['PHP_SELF'], ".php") == 'trajet') { ?>
             <a href="carte.php?depart=<?php echo urlencode($ligne['depart']); ?>&arrivee=<?php echo urlencode($ligne['arrivee']);?>&date=<?php echo urlencode(substr($ligne['date_depart'],0,10));?>&heure=<?php echo urlencode(substr($ligne['date_depart'],11,5));?>"
                 class="btn btn-outline-primary btn-sm">Voir sur la carte</a>
+            <?php } else { ?>
+            <a href="./SAECovoiturage/carte.php?depart=<?php echo urlencode($ligne['depart']); ?>&arrivee=<?php echo urlencode($ligne['arrivee']);?>&date=<?php echo urlencode(substr($ligne['date_depart'],0,10));?>&heure=<?php echo urlencode(substr($ligne['date_depart'],11,5));?>"
+                class="btn btn-outline-primary btn-sm">Voir sur la carte</a>
+            <?php } ?>
         </div>
     </div>
 </div>
