@@ -84,18 +84,23 @@ function afficherTrajets($trajets) {
             <p class="card-text text-muted small">
                 <?php echo $ligne['date_depart'] . " • " . $ligne['nb_places_dispo'] . " place(s) • Conducteur : " . $ligne['prenom'];?>
             </p>
-            <?php if(isset($_SESSION['user'])){?>
+            <?php if(isset($_SESSION['user']) && $_SESSION['nom'] !== 'admin'){?>
             <button onclick="openReservationPopup(
                 <?php echo $ligne['id_trajet'] . ", '" . $ligne['depart']. " → ". $ligne['arrivee'] ; ?>')"
                 class="btn btn-outline-primary btn-primary">
                 Réserver
             </button>
+            <?php }elseif (isset($_SESSION['user']) && basename($_SERVER['PHP_SELF'], ".php") == 'trajet') { ?>
+            <a href="/fichiers/php/supprimerTrajet.php?supprimer_trajet=<?php echo $ligne['id_trajet']; ?>"
+                class="btn btn-danger btn-danger">
+                Supprimer
+            </a>
             <?php } ?>
         </div>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <span class="fw-bold fs-5"><?php echo $ligne['prix'] . " €";?></span>
             <!-- Si la page est la page d'accueil ne pas afficher -->
-            <?php if ($page = basename($_SERVER['PHP_SELF'], ".php") == 'trajet') { ?>
+            <?php if (basename($_SERVER['PHP_SELF'], ".php") == 'trajet') { ?>
             <a href="carte.php?depart=<?php echo urlencode($ligne['depart']); ?>&arrivee=<?php echo urlencode($ligne['arrivee']);?>&date=<?php echo urlencode(substr($ligne['date_depart'],0,10));?>&heure=<?php echo urlencode(substr($ligne['date_depart'],11,5));?>"
                 class="btn btn-outline-primary btn-sm">Voir sur la carte</a>
             <?php } else { ?>

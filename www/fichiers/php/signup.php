@@ -10,6 +10,7 @@ $phone    = $_POST['telephone'] ?? null;
 $password = $_POST['mot_de_passe'] ?? null;
 $confirm  = $_POST['confirm_password'] ?? null; // champ "réentrer votre mdp"
 
+
 // Vérification des champs
 if ($nom && $prenom && $age && $mail && $phone && $password && $confirm) {
     
@@ -31,7 +32,7 @@ if ($nom && $prenom && $age && $mail && $phone && $password && $confirm) {
             ':nom'      => $nom,
             ':prenom'   => $prenom,
             ':age'      => $age,
-            ':mail'    => $mail,
+            ':mail'     => $mail,
             ':phone'    => $phone,
             ':password' => $hashedPassword
         ]);
