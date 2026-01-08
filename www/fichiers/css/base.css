@@ -1,18 +1,18 @@
 /* css/base.css */
-html, body {
-  height: 100%;              /* occupe toute la hauteur */
+html,
+body {
+  height: 100%; /* occupe toute la hauteur */
 }
 
 body {
-  background-color: #73b2e5 !important; 
+  background-color: #73b2e5 !important;
   color: #000000;
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;             /* active flexbox */
-  flex-direction: column;    /* empile en colonne */
-  min-height: 100vh;         /* hauteur minimum = fenêtre */
+  font-family: "Segoe UI", sans-serif;
+  display: flex; /* active flexbox */
+  flex-direction: column; /* empile en colonne */
+  min-height: 100vh; /* hauteur minimum = fenêtre */
 }
 
 main {
-  flex: 1;                   /* prend tout l’espace dispo */
+  flex: 1; /* prend tout l’espace dispo */
 }

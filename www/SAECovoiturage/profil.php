@@ -40,9 +40,10 @@ require(__DIR__.'/../fichiers/php/voiture.php');
                 <!-- Liens -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="./../index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./carte.php">Carte</a></li>
-                    <?php if (isset($_SESSION['user']) && $_SESSION['nom'] !== 'admin') { echo '<li class="nav-item"><a class="nav-link" href="./SAECovoiturage/proposerTrajet.php">Proposer un
-                            trajet</a></li>'; } ?>
+                    <?php if (isset($_SESSION['user']) && $_SESSION['nom'] !== 'admin') { echo '<li class="nav-item"><a class="nav-link" href="./proposerTrajet.php">Proposer un
+                            trajet</a></li>'; 
+                            echo '<li class="nav-item"><a class="nav-link" href="./reservations.php">Mes réservations</a></li>';
+                            } ?>
                     <li class="nav-item"><a class="nav-link" href="./trajet.php">Trajets</a></li>
                     <li class="nav-item"><a class="nav-link" href="./aPropos.php">À propos</a></li>
                 </ul>
@@ -75,7 +76,40 @@ require(__DIR__.'/../fichiers/php/voiture.php');
 
     <!-- Contenu principal -->
     <main class="container mt-5">
-        <!-- Section enregistrer une nouvelle voiture et les voir -->
+        <div class="row">
+            <!-- Informations personnelles -->
+            <section class="col-md-6 mb-4">
+                <h3>Informations personnelles</h3>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Nom :</strong> <span
+                            id="user-lastname"><?php echo $nom ?></span>
+                    </li>
+                    <li class="list-group-item"><strong>Prénom :</strong> <span
+                            id="user-firstname"><?php echo $prenom ?></span></li>
+                    <li class="list-group-item"><strong>Age :</strong> <span id="user-address"><?php echo $age ?></span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Paramètres du compte -->
+            <section class="col-md-6 mb-4">
+                <h3>Informations du compte</h3>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Adresse mail :</strong> <?php echo $email ?> </li>
+                    <li class="list-group-item"><strong>N° de téléphone</strong> <?php echo $telephone ?> </li>
+                    <li class="list-group-item"><strong>Date d'inscription :</strong> <?php echo $date_inscription ?>
+                    </li>
+                </ul>
+                <button onclick="openPopup()" class="btn btn-warning mt-3" id="changePasswordBtn">Changer le mot de
+                    passe</button>
+            </section>
+        </div>
+
+        <div class="container text-center py-4">
+            <a href="../fichiers/php/supprimerCompte.php" class="btn btn-danger ms-2">Supprimer le compte</a>
+            <a href="../fichiers/php/deconnexion.php" class="btn btn-danger ms-2">Déconnexion</a>
+        </div>
+
         <section class="col-md mb-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3>Mes véhicules</h3>
@@ -162,43 +196,6 @@ require(__DIR__.'/../fichiers/php/voiture.php');
                 });
         });
         </script>
-
-
-
-
-        <div class="row">
-            <!-- Informations personnelles -->
-            <section class="col-md-6 mb-4">
-                <h3>Informations personnelles</h3>
-                <ul class="list-group">
-                    <li class="list-group-item"><strong>Nom :</strong> <span
-                            id="user-lastname"><?php echo $nom ?></span>
-                    </li>
-                    <li class="list-group-item"><strong>Prénom :</strong> <span
-                            id="user-firstname"><?php echo $prenom ?></span></li>
-                    <li class="list-group-item"><strong>Age :</strong> <span id="user-address"><?php echo $age ?></span>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Paramètres du compte -->
-            <section class="col-md-6 mb-4">
-                <h3>Informations du compte</h3>
-                <ul class="list-group">
-                    <li class="list-group-item"><strong>Adresse mail :</strong> <?php echo $email ?> </li>
-                    <li class="list-group-item"><strong>N° de téléphone</strong> <?php echo $telephone ?> </li>
-                    <li class="list-group-item"><strong>Date d'inscription :</strong> <?php echo $date_inscription ?>
-                    </li>
-                </ul>
-                <button onclick="openPopup()" class="btn btn-warning mt-3" id="changePasswordBtn">Changer le mot de
-                    passe</button>
-            </section>
-        </div>
-
-        <div class="container text-center py-4">
-            <a href="../fichiers/php/supprimerCompte.php" class="btn btn-danger ms-2">Supprimer le compte</a>
-            <a href="../fichiers/php/deconnexion.php" class="btn btn-danger ms-2">Déconnexion</a>
-        </div>
 
         <div class="overlay" id="overlay">
             <div class="popup">

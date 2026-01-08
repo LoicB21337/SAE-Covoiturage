@@ -20,14 +20,14 @@ function rechercherTrajets($depart = null, $arrivee = null, $date = null, $heure
 
     // Départ
     if (!empty($depart)) {
-        $sql .= " AND UPPER(TRIM(t.depart)) = UPPER(TRIM(?))";
-        $params[] = $depart;
+        $sql .= " AND UPPER(TRIM(t.depart)) like UPPER(TRIM(?))";
+        $params[] = "%" . $depart . "%";
     }
 
     // Arrivée
     if (!empty($arrivee)) {
-        $sql .= " AND UPPER(TRIM(t.arrivee)) = UPPER(TRIM(?))";
-        $params[] = $arrivee;
+        $sql .= " AND UPPER(TRIM(t.arrivee)) like UPPER(TRIM(?))";
+        $params[] = "%" . $arrivee . "%";
     }
 
     // Gestion date/heure
