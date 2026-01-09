@@ -79,7 +79,9 @@ function afficherTrajets($trajets) {
 
 <div class="card h-70" id="trajet">
     <div class="card-body d-flex flex-column justify-content-between">
-        <h5 class="card-title"><?php echo $ligne['depart'] ." → " . $ligne['arrivee']; ?></h5>
+        <a href="trajetDetails.php?id_trajet=<?php echo $ligne['id_trajet']; ?>" class="text-decoration-none text-dark">
+            <h5 class="card-title"><?php echo $ligne['depart'] ." → " . $ligne['arrivee']; ?></h5>
+        </a>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <p class="card-text text-muted small">
                 <?php echo $ligne['date_depart'] . " • " . $ligne['nb_places_dispo'] . " place(s) • Conducteur : " . $ligne['prenom'];?>
@@ -101,11 +103,11 @@ function afficherTrajets($trajets) {
             <span class="fw-bold fs-5"><?php echo $ligne['prix'] . " €";?></span>
             <!-- Si la page est la page d'accueil ne pas afficher -->
             <?php if (basename($_SERVER['PHP_SELF'], ".php") == 'trajet') { ?>
-            <a href="carte.php?depart=<?php echo urlencode($ligne['depart']); ?>&arrivee=<?php echo urlencode($ligne['arrivee']);?>&date=<?php echo urlencode(substr($ligne['date_depart'],0,10));?>&heure=<?php echo urlencode(substr($ligne['date_depart'],11,5));?>"
-                class="btn btn-outline-primary btn-sm">Voir sur la carte</a>
+            <a href="trajetDetails.php?id_trajet=<?php echo $ligne['id_trajet']; ?>"
+                class="btn btn-outline-primary btn-sm">Voir les détails</a>
             <?php } else { ?>
-            <a href="./SAECovoiturage/carte.php?depart=<?php echo urlencode($ligne['depart']); ?>&arrivee=<?php echo urlencode($ligne['arrivee']);?>&date=<?php echo urlencode(substr($ligne['date_depart'],0,10));?>&heure=<?php echo urlencode(substr($ligne['date_depart'],11,5));?>"
-                class="btn btn-outline-primary btn-sm">Voir sur la carte</a>
+            <a href="./SAECovoiturage/trajetDetails.php?id_trajet=<?php echo $ligne['id_trajet']; ?>"
+                class="btn btn-outline-primary btn-sm">Voir les détails</a>
             <?php } ?>
         </div>
     </div>
