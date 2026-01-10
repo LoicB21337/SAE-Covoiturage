@@ -93,8 +93,8 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
                             </div>
                         </div>
                         <div class="row mb-2">
-                            <div class="col-5"></div>
-                            <div class="col-2">
+                            <div class="col-4"></div>
+                            <div class="col-4">
                                 <div class="row">
                                     <button type="submit" class="btn btn-primary">Rechercher</button>
                                     <button onclick="window.location.href='./trajet.php'" type="reset"
@@ -103,7 +103,7 @@ $heure = isset($_GET['heure']) ? $_GET['heure'] : null;
                                 </div>
 
                             </div>
-                            <div class="col-5"></div>
+                            <div class="col-4"></div>
                         </div>
                     </div>
             </div>

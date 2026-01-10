@@ -22,7 +22,8 @@ foreach ($reservations as $reservation) {
     echo '<h5 class="card-title">Trajet de ' . htmlspecialchars($reservation['depart']) . ' à ' . htmlspecialchars($reservation['arrivee']) . '</h5>';
     echo '<p class="card-text">Date de départ : ' . htmlspecialchars($reservation['date_depart']) . '</p>';
     echo '<p class="card-text">Prix par place : ' . htmlspecialchars($reservation['prix']) . ' €</p>';
-    echo '<a href="trajet.php?id=' . htmlspecialchars($reservation['id_trajet']) . '" class="btn btn-primary">Voir le trajet</a>';
+    echo '<a href="trajetDetails.php?id_trajet=' . htmlspecialchars($reservation['id_trajet']) . '" class="btn btn-primary">Voir le trajet</a>';
+    echo '<a href="../fichiers/php/supprimerReservation.php?id=' . htmlspecialchars($reservation['id_trajet']) . '" class="btn btn-danger">Supprimer la réservation</a>';
     echo '</div>';
     echo '</div>';
 }
