@@ -79,9 +79,16 @@ function afficherTrajets($trajets) {
 
 <div class="card h-70" id="trajet">
     <div class="card-body d-flex flex-column justify-content-between">
+        <?php if (basename($_SERVER['PHP_SELF'], ".php") == 'trajet') { ?>
         <a href="trajetDetails.php?id_trajet=<?php echo $ligne['id_trajet']; ?>" class="text-decoration-none text-dark">
             <h5 class="card-title"><?php echo $ligne['depart'] ." → " . $ligne['arrivee']; ?></h5>
         </a>
+        <?php } else { ?>
+        <a href="./SAECovoiturage/trajetDetails.php?id_trajet=<?php echo $ligne['id_trajet']; ?>"
+            class="text-decoration-none text-dark">
+            <h5 class="card-title"><?php echo $ligne['depart'] ." → " . $ligne['arrivee']; ?></h5>
+        </a>
+        <?php } ?>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <p class="card-text text-muted small">
                 <?php echo $ligne['date_depart'] . " • " . $ligne['nb_places_dispo'] . " place(s) • Conducteur : " . $ligne['prenom'] . " " . $ligne['nom'] . " • Score moyen : " . $ligne['moyenne_note'] . "/5";?>

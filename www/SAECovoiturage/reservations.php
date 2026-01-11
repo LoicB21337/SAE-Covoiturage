@@ -66,14 +66,15 @@ require('./../fichiers/php/listerReservation.php');
         </section>
     </main>
 
-    <!-- Footer collé en bas -->
-    <footer class="bg-light py-4 border-top text-center fixed-bottom">
-        <div class="container">
-            <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
-        </div>
-    </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<!-- Footer collé en bas -->
+<footer class="bg-light py-4 border-top text-center">
+    <div class="container">
+        <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
+    </div>
+</footer>
 
 </html>

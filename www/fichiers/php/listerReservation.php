@@ -92,9 +92,9 @@ function renderReservationCard($reservation, $isPast = false, $avis = null) {
     } else {
         // upcoming
         echo '<a href="trajetDetails.php?id_trajet=' . htmlspecialchars($reservation['id_trajet']) . '" class="btn btn-primary">Voir le trajet</a>';
+        echo '<a href="../fichiers/php/supprimerReservation.php?id=' . htmlspecialchars($reservation['id_trajet']) . '" class="btn btn-danger ms-2">Supprimer la réservation</a>';
     }
-
-    echo '<a href="../fichiers/php/supprimerReservation.php?id=' . htmlspecialchars($reservation['id_trajet']) . '" class="btn btn-danger ms-2">Supprimer la réservation</a>';
+    
     echo '</div>';
     echo '</div>';
 

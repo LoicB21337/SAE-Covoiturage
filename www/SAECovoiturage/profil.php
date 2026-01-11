@@ -332,8 +332,10 @@ require(__DIR__.'/../fichiers/php/voiture.php');
     </main>
 
     <!-- Pied de page -->
-    <footer class="text-center py-4 mt-5 bg-light">
-        <p>&copy; 2025 MonSiteWeb - Tous droits réservés</p>
+    <footer class="bg-light py-4 border-top text-center fixed-bottom">
+        <div class="container">
+            <small class="text-muted">© 2025 Way Together — Tous droits réservés</small>
+        </div>
     </footer>
 </body>
 

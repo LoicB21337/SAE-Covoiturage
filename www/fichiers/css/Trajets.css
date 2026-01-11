@@ -17,13 +17,6 @@ main {
   /* prend tout l’espace dispo */
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 #liste {
   margin-bottom: 100px;
 }

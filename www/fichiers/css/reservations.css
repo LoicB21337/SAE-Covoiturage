@@ -16,3 +16,18 @@
 .rating span.selected {
   color: gold;
 }
+
+/* Nav tabs: make inactive tabs darker than the active one */
+.nav-tabs .nav-link {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.nav-tabs .nav-link:not(.active) {
+  background-color: #343a40; /* dark background for inactive */
+  color: #ffffff; /* light text on dark */
+  border-color: #343a40;
+}
+.nav-tabs .nav-link.active {
+  background-color: #f8f9fa; /* lighter background for active */
+  color: #000000; /* dark text on light */
+  border-color: #dee2e6;
+}
