@@ -99,6 +99,13 @@ require(__DIR__.'/../fichiers/php/voiture.php');
                     <li class="list-group-item"><strong>N° de téléphone</strong> <?php echo $telephone ?> </li>
                     <li class="list-group-item"><strong>Date d'inscription :</strong> <?php echo $date_inscription ?>
                     </li>
+                    <li class="list-group-item"><strong>Note moyenne :</strong>
+                        <?php if ($note_moyenne !== null): ?>
+                        <?php echo htmlspecialchars($note_moyenne) ?> / 5 (<?php echo $nb_avis ?> avis)
+                        <?php else: ?>
+                        Aucune note reçue pour le moment.
+                        <?php endif; ?>
+                    </li>
                 </ul>
                 <button onclick="openPopup()" class="btn btn-warning mt-3" id="changePasswordBtn">Changer le mot de
                     passe</button>
@@ -298,6 +305,29 @@ require(__DIR__.'/../fichiers/php/voiture.php');
             <ul class="list-group" id="activity-list">
                 <?php afficherTrajets($trajets) ?>
             </ul>
+        </section>
+
+        <section class="mt-5">
+            <h3>Commentaires reçus</h3>
+            <?php if (empty($commentaires)): ?>
+            <p>Aucun commentaire reçu pour le moment.</p>
+            <?php else: ?>
+            <ul class="list-group">
+                <?php foreach ($commentaires as $c): ?>
+                <li class="list-group-item">
+                    <div><strong>De :</strong>
+                        <?php echo htmlspecialchars(trim($c['auteur_prenom'] . ' ' . $c['auteur_nom'])) ?> — <small
+                            class="text-muted"><?php echo htmlspecialchars($c['date_avis']) ?></small></div>
+                    <div><strong>Trajet :</strong> <?php echo htmlspecialchars($c['depart']) ?> →
+                        <?php echo htmlspecialchars($c['arrivee']) ?></div>
+                    <div><strong>Note :</strong> <?php echo htmlspecialchars($c['note']) ?> / 5</div>
+                    <?php if (!empty($c['commentaire'])): ?>
+                    <div class="mt-2"><?php echo nl2br(htmlspecialchars($c['commentaire'])) ?></div>
+                    <?php endif; ?>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
         </section>
     </main>
 

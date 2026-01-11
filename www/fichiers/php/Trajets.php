@@ -6,7 +6,7 @@ function rechercherTrajets($depart = null, $arrivee = null, $date = null, $heure
 
     $sql = "SELECT
                 t.id_trajet, t.id_conducteur, t.depart, t.arrivee, t.date_depart,
-                t.nb_places_dispo, t.prix, u.prenom
+                t.nb_places_dispo, t.prix, u.prenom, u.nom, u.moyenne_note
             FROM TRAJET t
             JOIN UTILISATEUR u ON t.id_conducteur = u.id_utilisateur
             WHERE t.nb_places_dispo > 0";
@@ -84,7 +84,7 @@ function afficherTrajets($trajets) {
         </a>
         <div class="d-flex justify-content-between align-items-center mt-2">
             <p class="card-text text-muted small">
-                <?php echo $ligne['date_depart'] . " • " . $ligne['nb_places_dispo'] . " place(s) • Conducteur : " . $ligne['prenom'];?>
+                <?php echo $ligne['date_depart'] . " • " . $ligne['nb_places_dispo'] . " place(s) • Conducteur : " . $ligne['prenom'] . " " . $ligne['nom'] . " • Score moyen : " . $ligne['moyenne_note'] . "/5";?>
             </p>
             <?php if(isset($_SESSION['user']) && $_SESSION['nom'] !== 'admin'){?>
             <button onclick="openReservationPopup(

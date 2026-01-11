@@ -15,7 +15,7 @@ require('./../fichiers/php/listerReservation.php');
     <link href="../fichiers/css/base.css" rel="stylesheet" />
     <link href="../fichiers/css/buttons.css" rel="stylesheet" />
     <link href="../fichiers/css/Trajets.css" rel="stylesheet" />
-
+    <link href="../fichiers/css/reservations.css" rel="stylesheet" />
 </head>
 
 <body>

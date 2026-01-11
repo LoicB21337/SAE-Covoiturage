@@ -132,10 +132,55 @@ require_once('./../includes/session_start.php');
         const modalTitle = document.getElementById("resultTitle");
         const modal = new bootstrap.Modal(modalEl);
 
+        // Ensure time cannot be before current time when date is today
+        const dateInput = document.getElementById('date');
+        const timeInput = document.getElementById('heure');
+
+        function pad(n) {
+            return String(n).padStart(2, '0');
+        }
+
+        function updateTimeMin() {
+            if (!dateInput || !timeInput) return;
+            const selected = dateInput.value;
+            const now = new Date();
+            const today = now.toISOString().slice(0, 10);
+            if (selected === today) {
+                const minTime = pad(now.getHours()) + ':' + pad(now.getMinutes());
+                timeInput.min = minTime;
+                if (timeInput.value && timeInput.value < minTime) timeInput.value = minTime;
+            } else {
+                timeInput.removeAttribute('min');
+            }
+        }
+
+        // initialize and bind
+        updateTimeMin();
+        dateInput.addEventListener('change', updateTimeMin);
+
+
         let isSuccess = false;
 
         form.addEventListener("submit", function(e) {
             e.preventDefault();
+
+            // Validate combined date+time is strictly in the future
+            const selectedDate = dateInput.value; // YYYY-MM-DD
+            const selectedTime = timeInput.value; // HH:MM
+            if (!selectedDate || !selectedTime) {
+                modalTitle.textContent = "Erreur";
+                modalMsg.textContent = "Veuillez renseigner la date et l'heure du trajet.";
+                modal.show();
+                return;
+            }
+            const selectedDateTime = new Date(selectedDate + 'T' + selectedTime + ':00');
+            const now = new Date();
+            if (selectedDateTime <= now) {
+                modalTitle.textContent = "Date/heure invalide";
+                modalMsg.textContent = "La date et l'heure doivent être postérieures à maintenant.";
+                modal.show();
+                return;
+            }
 
             const formData = new FormData(form);
 

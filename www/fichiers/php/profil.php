@@ -26,6 +26,18 @@ $stmt = $pdo->prepare("SELECT id_trajet, depart, arrivee, date_depart, nb_places
 $stmt->execute(['id' => $userId]);
 $trajets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+// Calculer la note moyenne reçue pour les trajets de cet utilisateur
+$avgStmt = $pdo->prepare('SELECT AVG(a.note) AS avg_note, COUNT(a.id_avis) AS nb_avis FROM AVIS a JOIN TRAJET t ON a.id_trajet = t.id_trajet WHERE t.id_conducteur = :id');
+$avgStmt->execute(['id' => $userId]);
+$avgRow = $avgStmt->fetch(PDO::FETCH_ASSOC);
+$note_moyenne = $avgRow && $avgRow['avg_note'] !== null ? round((float)$avgRow['avg_note'], 2) : null;
+$nb_avis = $avgRow ? (int)$avgRow['nb_avis'] : 0;
+
+// Récupérer la liste des commentaires reçus (avec auteur et trajet)
+$comStmt = $pdo->prepare('SELECT a.note, a.commentaire, a.date_avis, a.id_trajet, t.depart, t.arrivee, u.nom AS auteur_nom, u.prenom AS auteur_prenom FROM AVIS a JOIN TRAJET t ON a.id_trajet = t.id_trajet JOIN UTILISATEUR u ON a.id_utilisateur = u.id_utilisateur WHERE t.id_conducteur = :id ORDER BY a.date_avis DESC');
+$comStmt->execute(['id' => $userId]);
+$commentaires = $comStmt->fetchAll(PDO::FETCH_ASSOC);
+
 function afficherTrajets($trajets) {
     if (empty($trajets)) {
         echo "<p>Aucun trajet proposé.</p>";
